@@ -1,2 +1,0 @@
-class NotificationTable < ApplicationRecord
-end
