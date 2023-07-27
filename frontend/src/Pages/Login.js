@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import IMG from "../assets/Login Page.png"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 // React Recoil
 import { useRecoilState } from "recoil"
 import { userState } from "../atom/userAtom"
 
 function Login() {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,7 +24,7 @@ function Login() {
 
     //setting app wide state
     setUser({ email: enteredEmail, password: enteredPassword })
-    history.push("/profile")
+    navigate("/profile")
   }
 
   return (
