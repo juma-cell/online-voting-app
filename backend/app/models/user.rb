@@ -3,7 +3,7 @@ class User < ApplicationRecord
     
     has_many :feedbacks
     has_many :user_votes
-    belongs_to :voting_events
+    belongs_to :voting_event
     has_many :candidates, through: :user_votes
 
     validates :firstName, :lastName, presence: true, length: { maximum: 50 }
