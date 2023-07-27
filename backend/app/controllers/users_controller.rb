@@ -9,26 +9,31 @@ class UsersController < ApplicationController
   def loggedin_user
     user = User.find_by(id: session[:user_id])
     if user
-      patients = user.patients.where(archive: false)
-      render json: user.as_json(include: [:appointments, :patients]), patients: patients
+      feedbacks = user.feedbacks
+      render json: user.as_json(include: [:feedbacks])
     else
       render json: [].as_json, status: :not_found
     end
   end
-  
-  # Get Single User
+
   def show
-    user = User.includes(:appointments, :patients).find_by(id: params[:id])
+    user = User.includes(:feedbacks).find_by(id: params[:id])
     if user
-      render json: user.as_json(include: [:appointments, :patients])
+      render json: user.as_json(include: [:feedbacks])
     else
       render json: { error: "User not found" }, status: :not_found
     end
   end
 
-  # Add new user
   def create
-    user = User.create(email: params[:email], rank: params[:rank],name: params[:name], password: params[:password])
+    user = User.create(
+      firstName: params[:firstName],
+      lastName: params[:lastName],
+      userName: params[:userName],
+      email: params[:email],
+      password: params[:password]
+    )
+
     if user.valid?
       render json: { success: "User created successfully" }, status: :created
     else
@@ -36,25 +41,24 @@ class UsersController < ApplicationController
     end
   end
 
-    # Change user's password
-def changepassword
-  user = User.find_by(id: params[:id])
-  if user
-    current_password = params[:current_password]
-    new_password = params[:new_password]
+  def changepassword
+    user = User.find_by(id: params[:id])
+    if user
+      current_password = params[:current_password]
+      new_password = params[:new_password]
 
-    if user.authenticate(current_password)
-      user.update(password: new_password)
-      message = { success: "Password has been changed successfully" }
+      if user.authenticate(current_password)
+        user.update(password: new_password)
+        message = { success: "Password has been changed successfully" }
+      else
+        render json: { error: "Incorrect current password" }, status: :not_acceptable
+        return
+      end
     else
-      render json: { error: "Incorrect current password" }, status: :not_acceptable
+      render json: { error: "User not found" }, status: :not_found
       return
     end
-  else
-    render json: { error: "User not found" }, status: :not_found
-    return
-  end
 
-  render json: message
-end
+    render json: message
+  end
 end
