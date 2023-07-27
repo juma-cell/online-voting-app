@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :candidates
   resources :user_votes
   resources :events_options
   resources :feedbacks
