@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import IMG from "../assets/Login Page.png"
 import { useNavigate } from "react-router-dom"
 
-// React Recoil
 import { useRecoilState } from "recoil"
 import { userState } from "../atom/userAtom"
 
@@ -20,9 +19,7 @@ function Login() {
 
     if (!enteredEmail && !enteredPassword) return
 
-    //  Logic for validating users
 
-    //setting app wide state
     setUser({ email: enteredEmail, password: enteredPassword })
     navigate("/profile")
   }

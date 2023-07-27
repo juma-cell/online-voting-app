@@ -3,7 +3,6 @@ import ProfileHeader from "../components/profile-header"
 import IMG from "../assets/Vector (4).png"
 import IMGG from "../assets/avatar.png"
 
-// React Recoil
 import { useRecoilState } from "recoil"
 import { userState } from "../atom/userAtom"
 
@@ -12,7 +11,6 @@ function Profile() {
   console.log(user)
   return (
     <>
-      {/* Profile Header */}
       <div className="w-full pt-10 ">
         <div className=" md:flex justify-end">
           <div className="profileheader_titles">Personal Info</div>
@@ -24,7 +22,6 @@ function Profile() {
         </div>
       </div>
 
-      {/* Body */}
 
       <div className=" md:flex mx-auto p-20">
         <div className="md:w-[50%]">
