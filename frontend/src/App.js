@@ -1,12 +1,12 @@
 import './App.css';
-import Navbar from './Layout/Navbar';
+import Layout from './Layout/Layout';
+
 
 function App() {
   return (
 <>
-<Navbar/>
 
-
+<Layout/>
 </>
   );
 }
