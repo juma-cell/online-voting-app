@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #001124;
+}
+
+.signup_title {
+  color: #fff;
+  font-family: DM Serif Display;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signup_input {
+  width: 361px;
+  height: 43px;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.signup_label {
+  color: #fff;
+  font-family: Padauk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signup_button {
+  width: 180px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #015fc7;
+}
+
+.login_forgot_password {
+  color: #499ffe;
+  font-family: Padauk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profileheader {
+  background-color: aquamarine;
+}
+
+.profileheader_titles {
+  color: #fff;
+  font-family: DM Serif Display;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  width: 200px;
+}
+
+.profile_button {
+  width: 282px;
+  height: 49px;
+  background: #015fc7;
+  color: #fff;
+}
+
+.profile_title {
+  color: #015fc7;
+  font-family: Padauk;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
