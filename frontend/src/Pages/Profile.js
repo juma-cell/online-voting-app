@@ -2,7 +2,7 @@ import React from 'react'
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div style={{ color: 'white' }}>Profile</div>
   )
 }
 
