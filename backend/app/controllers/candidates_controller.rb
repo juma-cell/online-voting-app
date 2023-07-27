@@ -65,6 +65,6 @@ class CandidatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def candidate_params
-      params.require(:candidate).permit(:role, :userName, :user_vote_id, :voting_event_id)
+      params.require(:candidate).permit(:name, :party, :manifesto, :image_url)
     end
 end
