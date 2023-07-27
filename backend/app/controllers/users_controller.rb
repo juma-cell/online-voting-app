@@ -1,70 +1,60 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :authorize
 
-  # GET /users or /users.json
   def index
-    @users = User.all
+    users = User.all
+    render json: users.as_json
   end
 
-  # GET /users/1 or /users/1.json
+  def loggedin_user
+    user = User.find_by(id: session[:user_id])
+    if user
+      patients = user.patients.where(archive: false)
+      render json: user.as_json(include: [:appointments, :patients]), patients: patients
+    else
+      render json: [].as_json, status: :not_found
+    end
+  end
+  
+  # Get Single User
   def show
+    user = User.includes(:appointments, :patients).find_by(id: params[:id])
+    if user
+      render json: user.as_json(include: [:appointments, :patients])
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end
   end
 
-  # GET /users/new
-  def new
-    @user = User.new
-  end
-
-  # GET /users/1/edit
-  def edit
-  end
-
-  # POST /users or /users.json
+  # Add new user
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    user = User.create(email: params[:email], rank: params[:rank],name: params[:name], password: params[:password])
+    if user.valid?
+      render json: { success: "User created successfully" }, status: :created
+    else
+      render json: { error: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    # Change user's password
+def changepassword
+  user = User.find_by(id: params[:id])
+  if user
+    current_password = params[:current_password]
+    new_password = params[:new_password]
+
+    if user.authenticate(current_password)
+      user.update(password: new_password)
+      message = { success: "Password has been changed successfully" }
+    else
+      render json: { error: "Incorrect current password" }, status: :not_acceptable
+      return
     end
+  else
+    render json: { error: "User not found" }, status: :not_found
+    return
   end
 
-  # DELETE /users/1 or /users/1.json
-  def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:firstName, :lastName, :userName, :email, :password_digest, :profile_picture, :is_admin)
-    end
+  render json: message
+end
 end
