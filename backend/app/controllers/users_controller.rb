@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     render json: users.as_json
   end
 
-  def loggedin_user
+  def logged_in
     user = User.find_by(id: session[:user_id])
     if user
       feedbacks = user.feedbacks
@@ -26,18 +26,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(
-      firstName: params[:firstName],
-      lastName: params[:lastName],
-      userName: params[:userName],
-      email: params[:email],
-      password: params[:password]
-    )
-
-    if user.valid?
+    user = User.new(user_params)
+  
+    if user.save
       render json: { success: "User created successfully" }, status: :created
     else
-      render json: { error: user.errors.full_messages }, status: :unprocessable_entity
+      if user.errors[:userName].include?("has already been taken") || user.errors[:email].include?("has already been taken")
+        render json: { errors: "User with the same username or email already exists" }, status: :unprocessable_entity
+      else
+        render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   end
 
@@ -61,4 +59,10 @@ class UsersController < ApplicationController
 
     render json: message
   end
+  private
+
+  def user_params
+    params.permit(:firstName, :lastName, :userName, :email, :password)
+  end
+
 end
