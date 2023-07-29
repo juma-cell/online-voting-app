@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import "./App.css"
 import Layout from "./Layout/Layout"
 import Home from "./Pages/Home"
@@ -7,6 +7,8 @@ import Profile from "./Pages/Profile"
 import Login from "./Pages/Login"
 import Election from "./Pages/Election"
 import Voting from "./Pages/Voting"
+import About from "./Pages/About"
+import NotificationList from "./Pages/NotificationList"
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/election" element={<Election />} />
         <Route path="/voting" element={<Voting />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/notification" element={<NotificationList />} />
+
       </Route>
     </Routes>
   )
