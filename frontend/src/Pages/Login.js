@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil"
 import { userState } from "../atom/userAtom"
 
 function Login() {
+  
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
@@ -47,7 +48,7 @@ function Login() {
         </div>
 
         <div className="mt-5">
-          <div className="signup_label">Password</div>
+          <div className="signup_label">Password </div>
 
           <input
             type="password"
@@ -62,7 +63,7 @@ function Login() {
         <div className="login_forgot_password">Forgot Password</div>
         <div>
           Not a user?{" "}
-          <span className="login_forgot_password">Register now</span>
+          <span className="login_forgot_password"> Register now </span>
         </div>
 
         <div className="mx-auto mt-5">

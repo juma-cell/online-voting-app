@@ -12,10 +12,11 @@ function Footer() {
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Voting</span>
           </div>
           <ul className="flex flex-wrap items-center mb-4 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-            <li><Link to="/profile" className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Profile</Link></li>
-            <li><div className="mr-4 hover:underline md:mr-6">Privacy Policy</div></li>
-            <li><div className="mr-4 hover:underline md:mr-6">Licensing</div></li>
-            <li><div className="hover:underline">Contact</div></li>
+            <Link to="/about" className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">About Us</Link>
+
+            <li className="ml-4 md:ml-6"><div className="hover:underline">Licensing</div></li>
+
+            <li className="ml-4 md:ml-6"><div className="hover:underline">Contact</div></li>
           </ul>
         </div>
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">&copy; 2023 <a href="https://flowbite.com/" className="hover:underline">d</a>. All Rights Reserved.</span>
