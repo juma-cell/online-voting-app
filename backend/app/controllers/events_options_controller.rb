@@ -1,7 +1,7 @@
+# app/controllers/events_options_controller.rb
 class EventsOptionsController < ApplicationController
   before_action :set_events_option, only: [:show, :edit, :update, :destroy]
 
-  
   def index
     @events_options = EventsOption.all
     render json: @events_options
@@ -15,7 +15,6 @@ class EventsOptionsController < ApplicationController
     @events_option = EventsOption.new
   end
 
-  
   def edit
   end
 
@@ -28,7 +27,6 @@ class EventsOptionsController < ApplicationController
       render json: @events_option.errors, status: :unprocessable_entity
     end
   end
-
 
   def update
     if @events_option.update(events_option_params)
@@ -49,7 +47,6 @@ class EventsOptionsController < ApplicationController
     @events_option = EventsOption.find(params[:id])
   end
 
-  
   def events_option_params
     params.require(:events_option).permit(:options, :eventName, :voting_event_id)
   end
