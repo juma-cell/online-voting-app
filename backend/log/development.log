@@ -2278,3 +2278,225 @@ FOREIGN KEY ("voting_event_id")
   [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-07-29 08:27:28.210842"], ["updated_at", "2023-07-29 08:27:28.210842"]]
   [1m[36mTRANSACTION (169.0ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/feedbacks" for 127.0.0.1 at 2023-07-29 11:40:32 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FeedbacksController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 404 Not Found in 97ms (ActiveRecord: 1.3ms | Allocations: 12089)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Started GET "/users" for 127.0.0.1 at 2023-07-29 11:40:48 +0300
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 82ms (Views: 77.9ms | ActiveRecord: 0.5ms | Allocations: 3011)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-07-29 11:40:57 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"John", "lastName"=>"Doe", "userName"=>"doejohn", "email"=>"t@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>""}
+[31mUnpermitted parameters: :is_admin, :profile_picture. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f4145b7eef8>, params: {"firstName"=>"John", "lastName"=>"Doe", "userName"=>"doejohn", "email"=>"t@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>"", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "doejohn"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "t@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "John"], ["lastName", "Doe"], ["userName", "doejohn"], ["email", "t@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-07-29 08:40:57.666466"], ["updated_at", "2023-07-29 08:40:57.666466"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (124.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 733ms (Views: 49.1ms | ActiveRecord: 125.5ms | Allocations: 26378)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-29 11:41:04 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"t@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "t@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 412ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 1305)
+
+
+Started GET "/feedbacks" for 127.0.0.1 at 2023-07-29 11:41:12 +0300
+Processing by FeedbacksController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mFeedback Load (0.3ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks"[0m
+  ↳ app/controllers/feedbacks_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 68ms (Views: 3.3ms | ActiveRecord: 0.5ms | Allocations: 4502)
+
+
+Started POST "/feedbacks" for 127.0.0.1 at 2023-07-29 11:41:18 +0300
+Processing by FeedbacksController#create as */*
+  Parameters: {"feedback"=>{"eventName"=>"general elections", "message"=>"ended early"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (1.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."user_id" = ? AND "voting_events"."id" IS NULL LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feedbacks_controller.rb:17:in `create'
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 3.8ms | Allocations: 25340)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `voting_event_id`):
+  
+app/controllers/feedbacks_controller.rb:17:in `create'
+  [1m[35m (125.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (136.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230727085605)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "firstName" varchar, "lastName" varchar, "userName" varchar, "email" varchar, "password_digest" varchar, "profile_picture" varchar, "is_admin" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727085605"]]
+  [1m[36mTRANSACTION (110.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVotingEvents (20230727093856)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "voting_events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "eventsName" varchar, "eventsDescription" text, "duration" integer, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f556fc4616"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE INDEX "index_voting_events_on_user_id" ON "voting_events" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727093856"]]
+  [1m[36mTRANSACTION (105.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFeedbacks (20230727101152)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "feedbacks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "eventName" varchar, "message" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c57bb6cf28"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_feedbacks_on_user_id" ON "feedbacks" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727101152"]]
+  [1m[36mTRANSACTION (108.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEventsOptions (20230727102803)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "events_options" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "options" varchar, "eventName" varchar, "voting_event_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_afeb3bd30d"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_events_options_on_voting_event_id" ON "events_options" ("voting_event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727102803"]]
+  [1m[36mTRANSACTION (110.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserVotes (20230727105315)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "userName" varchar, "vote_id" integer, "eventName" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727105315"]]
+  [1m[36mTRANSACTION (154.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCandidates (20230727105535)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "candidates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar, "userName" varchar, "user_vote_id" integer NOT NULL, "voting_event_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_9d45c22de2"
+FOREIGN KEY ("user_vote_id")
+  REFERENCES "user_votes" ("id")
+, CONSTRAINT "fk_rails_f4183070d5"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_candidates_on_user_vote_id" ON "candidates" ("user_vote_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_candidates_on_voting_event_id" ON "candidates" ("voting_event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727105535"]]
+  [1m[36mTRANSACTION (106.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-07-29 08:48:32.662870"], ["updated_at", "2023-07-29 08:48:32.662870"]]
+  [1m[36mTRANSACTION (88.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for 127.0.0.1 at 2023-07-29 11:53:53 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 200 OK in 42ms (Views: 5.9ms | ActiveRecord: 0.4ms | Allocations: 11048)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-07-29 11:53:57 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"John", "lastName"=>"Doe", "userName"=>"doejohn", "email"=>"t@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>""}
+[31mUnpermitted parameters: :is_admin, :profile_picture. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f37fc808348>, params: {"firstName"=>"John", "lastName"=>"Doe", "userName"=>"doejohn", "email"=>"t@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>"", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "doejohn"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "t@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "John"], ["lastName", "Doe"], ["userName", "doejohn"], ["email", "t@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-07-29 08:53:58.047132"], ["updated_at", "2023-07-29 08:53:58.047132"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (79.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 200 OK in 571ms (Views: 4.8ms | ActiveRecord: 82.5ms | Allocations: 26639)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-29 11:54:02 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"t@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "t@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 422ms (Views: 1.1ms | ActiveRecord: 0.5ms | Allocations: 1872)
+
+
+Started POST "/feedbacks" for 127.0.0.1 at 2023-07-29 11:54:12 +0300
+Processing by FeedbacksController#create as */*
+  Parameters: {"feedback"=>{"eventName"=>"general elections", "message"=>"ended early"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/feedbacks_controller.rb:18:in `create'
+  [1m[36mFeedback Create (0.7ms)[0m  [1m[32mINSERT INTO "feedbacks" ("eventName", "message", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["eventName", "general elections"], ["message", "ended early"], ["user_id", 1], ["created_at", "2023-07-29 08:54:12.642813"], ["updated_at", "2023-07-29 08:54:12.642813"]]
+  ↳ app/controllers/feedbacks_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (86.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/feedbacks_controller.rb:18:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Feedback (0.55ms)
+Completed 201 Created in 143ms (Views: 4.3ms | ActiveRecord: 88.3ms | Allocations: 23711)
+
+
+Started GET "/feedbacks" for 127.0.0.1 at 2023-07-29 11:54:53 +0300
+Processing by FeedbacksController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mFeedback Load (0.2ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks"[0m
+  ↳ app/controllers/feedbacks_controller.rb:7:in `index'
+No serializer found for resource: #<Feedback id: 1, eventName: "general elections", message: "ended early", user_id: 1, created_at: "2023-07-29 08:54:12.642813000 +0000", updated_at: "2023-07-29 08:54:12.642813000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Feedback::ActiveRecord_Relation (1.01ms)
+Completed 200 OK in 13ms (Views: 9.3ms | ActiveRecord: 0.5ms | Allocations: 1429)
+
+
+Started DELETE "/feedbacks/1" for 127.0.0.1 at 2023-07-29 11:55:01 +0300
+Processing by FeedbacksController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mFeedback Load (0.4ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/feedbacks_controller.rb:51:in `set_feedback'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/feedbacks_controller.rb:39:in `destroy'
+  [1m[36mFeedback Destroy (0.4ms)[0m  [1m[31mDELETE FROM "feedbacks" WHERE "feedbacks"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/feedbacks_controller.rb:39:in `destroy'
+  [1m[36mTRANSACTION (91.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/feedbacks_controller.rb:39:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 105ms (Views: 0.9ms | ActiveRecord: 92.7ms | Allocations: 3023)
+
+
+Started GET "/feedbacks" for 127.0.0.1 at 2023-07-29 11:55:08 +0300
+Processing by FeedbacksController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mFeedback Load (0.2ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks"[0m
+  ↳ app/controllers/feedbacks_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 1204)
+
+

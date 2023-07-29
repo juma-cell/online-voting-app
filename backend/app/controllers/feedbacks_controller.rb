@@ -14,7 +14,6 @@ class FeedbacksController < ApplicationController
   def create
     if @current_user
       @feedback = @current_user.feedbacks.build(feedback_params)
-      @feedback.voting_event = @current_user.voting_events.find_by(id: params[:voting_event_id])
 
       if @feedback.save
         render json: @feedback, status: :created
