@@ -7,9 +7,7 @@ class FeedbacksController < ApplicationController
     render json: @feedbacks
   end
 
-  def show
-    render json: @feedback
-  end
+  
 
   def create
     if @current_user
@@ -25,15 +23,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  def update
-    if @current_user && @feedback.update(feedback_params)
-      render json: @feedback
-    elsif @current_user.nil?
-      render json: { error: "Unauthorized, please log in to update a feedback" }, status: :unauthorized
-    else
-      render json: { errors: @feedback.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
+  
 
   def destroy
     if @current_user && @feedback.destroy
