@@ -656,3 +656,30 @@ Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 215)
 >>>>>>> c61ef949c46d6216a682a128d524f9e2c1420a8e
 
 
+Started GET "/ws" for ::1 at 2023-07-29 05:30:24 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/ws"):
+  
+Started GET "/" for 127.0.0.1 at 2023-07-29 05:42:31 +0300
+Started GET "/" for 127.0.0.1 at 2023-07-29 05:42:31 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/epharus/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendering /home/epharus/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/epharus/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 22.9ms | Allocations: 540)
+  Rendered /home/epharus/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 22.5ms | Allocations: 510)
+Completed 200 OK in 393ms (Views: 29.2ms | ActiveRecord: 0.0ms | Allocations: 5169)
+
+
+Completed 200 OK in 369ms (Views: 29.2ms | ActiveRecord: 0.0ms | Allocations: 4901)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-29 05:42:49 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (31.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 411ms (Views: 0.7ms | ActiveRecord: 41.3ms | Allocations: 11434)
+
+
