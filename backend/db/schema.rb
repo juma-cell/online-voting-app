@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_105535) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_29_105856) do
   create_table "candidates", force: :cascade do |t|
     t.string "role"
     t.string "userName"
@@ -42,10 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_105535) do
 
   create_table "user_votes", force: :cascade do |t|
     t.string "userName"
-    t.integer "vote_id"
     t.string "eventName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "voting_event_id", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_user_votes_on_user_id"
+    t.index ["voting_event_id"], name: "index_user_votes_on_voting_event_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,5 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_105535) do
   add_foreign_key "candidates", "voting_events"
   add_foreign_key "events_options", "voting_events"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "user_votes", "users"
+  add_foreign_key "user_votes", "voting_events"
   add_foreign_key "voting_events", "users"
 end
