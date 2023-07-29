@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:index, :create, :destroy ]
   resources :notification_tables
   resources :voting_events
-  resources :users
+  resources :users[:index, :create ]
+
   get "/logged_in", to:'sessions#logged_in'
   post "/login", to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
