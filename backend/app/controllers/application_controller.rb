@@ -1,13 +1,4 @@
-class ApplicationController < ActionController::API
-    include ActionController::Cookies
-    before_action :authorize
+class ApplicationController < ActionController::Base
+   skip_before_action :verify_authenticity_token
+end
  
-    private
-    def authorize
-       @current_user=User.find_by(id: session[:user_id])
-       if !@current_user
-          render json: {"error": "not authorized"}
-       end
-    
-    end
- end

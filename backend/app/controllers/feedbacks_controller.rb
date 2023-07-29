@@ -1,20 +1,59 @@
 class FeedbacksController < ApplicationController
-  before_action :set_feedback, only: [:show]
+  include CurrentUserConcern
+  before_action :set_feedback, only: [:show, :update, :destroy]
 
-  # GET /feedbacks/1 or /feedbacks/1.json
+  def index
+    @feedbacks = Feedback.all
+    render json: @feedbacks
+  end
+
   def show
-    feedback = Feedback.find_by(id: params[:id]) # value or nil
-    if feedback
-      render json: feedback.as_json(include: :user)
+    render json: @feedback
+  end
+
+  def create
+    if @current_user
+      @feedback = @current_user.feedbacks.build(feedback_params)
+      @feedback.voting_event = @current_user.voting_events.find_by(id: params[:voting_event_id])
+
+      if @feedback.save
+        render json: @feedback, status: :created
+      else
+        render json: { errors: @feedback.errors.full_messages }, status: :unprocessable_entity
+      end
     else
-      render json: { error: "Feedback not found" }, status: :not_found
+      render json: { error: "Unauthorized, please log in to create a feedback" }, status: :unauthorized
+    end
+  end
+
+  def update
+    if @current_user && @feedback.update(feedback_params)
+      render json: @feedback
+    elsif @current_user.nil?
+      render json: { error: "Unauthorized, please log in to update a feedback" }, status: :unauthorized
+    else
+      render json: { errors: @feedback.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @current_user && @feedback.destroy
+      render json: { message: "Feedback was successfully destroyed" }, status: :ok
+    elsif @current_user.nil?
+      render json: { error: "Unauthorized, please log in to delete a feedback" }, status: :unauthorized
+    else
+      render json: { errors: @feedback.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_feedback
-    @feedback = Feedback.find(params[:id])
+    @feedback = Feedback.find_by(id: params[:id])
+    render json: { error: "Feedback not found" }, status: :not_found unless @feedback
+  end
+
+  def feedback_params
+    params.require(:feedback).permit(:eventName, :message)
   end
 end

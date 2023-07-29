@@ -12,6 +12,11 @@ module Backend
     config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
+     # Force Rails to load the session
+   config.middleware.use ActionDispatch::Session::CookieStore
+
+   # Set the session duration to 1 day (86400 seconds)
+   config.session_store :cookie_store, key: '_your_app_name_session', expire_after: 1.day
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.

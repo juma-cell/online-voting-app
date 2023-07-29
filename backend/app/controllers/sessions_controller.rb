@@ -1,28 +1,41 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorize
-
-    def login 
-        email = params[:email]
-        password = params[:password]
-        
-        user = User.find_by(email: email)
-
-        if user && user.authenticate(password)
-            session[:user_id]=user.id
-
-            render json: {success: "Login success"}
-        else
-            render json: {error: "Wrong login credentials"}
-
-        end
-    end 
-
-
-    def logout
-       session.delete :user_id
-       render json: {success: "Logout success"}
-
+    
+  
+    include CurrentUserConcern
+    def login
+      user = User
+             .find_by(email: params["email"])
+             .try(:authenticate, params["password"])
+          
+      if user
+        session[:user_id] = user.id
+        render json: {
+          message: 'Log in successful',
+          
+        }
+      else
+        render json: {
+          status: 401
+        }
+      end
     end
-
-
-end
+    def logged_in
+        if @current_user
+            render json: {
+                message: 'You are logged in',
+                
+            }
+        else
+            render json:{
+                message: 'Please log in'
+            }
+        end
+    end
+    def logout
+        reset_session
+        render json:{
+            message: 'Log out successful'
+        }
+    end
+  end
+  
