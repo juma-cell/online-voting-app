@@ -15,14 +15,6 @@ function Signup() {
           <div className="signup_label">Name</div>
           <input type="text" className="signup_input" />
         </div>
-
-        <div className="mt-5 flex flex-col">
-          <div className="signup_label">Date Of Birth</div>
-          <input type="text" className="signup_input" />
-        </div>
-
-       
-
         <div className="mt-5 flex flex-col">
           <div className="signup_label">Email</div>
           <input type="text" className="signup_input" />
@@ -37,12 +29,6 @@ function Signup() {
           <div className="signup_label">Password</div>
           <input type="text" className="signup_input" />
         </div>
-
-        <div className="mt-5 flex flex-col">
-          <div className="signup_label">Re-enter Password</div>
-          <input type="text" className="signup_input" />
-        </div>
-
 
         <div className="mx-auto mt-5">
           <button className="signup_button">SUBMIT</button>

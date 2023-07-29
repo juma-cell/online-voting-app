@@ -1,12 +1,19 @@
 import React from 'react';
-import image4 from '../assets/image4.png';
+import image5 from '../assets/image5.png';
+import image3 from '../assets/image3.png';
 
 function Home() {
   return (
-    <div style={{ color: 'white', display: 'flex', alignItems: 'center' }}>
-      <img src={image4} alt="Image 4" style={{ marginRight: '20px' }} />
-      <span>Home</span>
+    <div style={{ color: 'white', display: 'flex', alignItems: 'center' }}>        
+     <img src={image5} alt="" style={{ marginRight: '20px', width: '700px', height: '400px' }} />
+
+    <img src={image3} alt="" style={{ marginRight: '90px', width: '700px', height: '400px' }} />
+
+
+
     </div>
+
+   
   );
 }
 
