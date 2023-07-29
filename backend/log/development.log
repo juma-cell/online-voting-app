@@ -3469,3 +3469,42 @@ Processing by EventsOptionsController#index as HTML
 Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 2353)
 
 
+Started GET "/users" for 127.0.0.1 at 2023-07-29 17:43:45 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.05ms)
+Completed 200 OK in 399ms (Views: 208.7ms | ActiveRecord: 2.6ms | Allocations: 29689)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-29 17:45:25 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"t@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "t@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 503ms (Views: 29.5ms | ActiveRecord: 0.7ms | Allocations: 5512)
+
+
+Started PUT "//users/1/changepassword" for 127.0.0.1 at 2023-07-29 17:46:47 +0300
+Processing by UsersController#changepassword as */*
+  Parameters: {"current_password"=>"[FILTERED]", "new_password"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `changepassword'
+  [1m[36mTRANSACTION (21.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:37:in `changepassword'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? AND "users"."id" != ? LIMIT ?[0m  [["userName", "doejohn"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `changepassword'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "t@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `changepassword'
+  [1m[36mUser Update (273.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-07-29 14:46:53.872352"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `changepassword'
+  [1m[36mTRANSACTION (912.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:37:in `changepassword'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.24ms)
+Completed 200 OK in 3176ms (Views: 5.7ms | ActiveRecord: 1208.6ms | Allocations: 5669)
+
+
