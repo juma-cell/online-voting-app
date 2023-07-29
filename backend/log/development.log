@@ -3329,3 +3329,57 @@ Processing by FeedbacksController#destroy as */*
 Completed 200 OK in 115ms (Views: 1.2ms | ActiveRecord: 98.5ms | Allocations: 3001)
 
 
+Started POST "/users" for 127.0.0.1 at 2023-07-29 15:33:53 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"clinton", "lastName"=>"wambua", "userName"=>"clict", "email"=>"clintonwambua@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>""}
+[31mUnpermitted parameters: :is_admin, :profile_picture. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fa740bbcfd0>, params: {"firstName"=>"clinton", "lastName"=>"wambua", "userName"=>"clict", "email"=>"clintonwambua@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>"", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "clict"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "clintonwambua@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "clinton"], ["lastName", "wambua"], ["userName", "clict"], ["email", "clintonwambua@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-07-29 12:33:55.096498"], ["updated_at", "2023-07-29 12:33:55.096498"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 569ms (Views: 3.4ms | ActiveRecord: 16.8ms | Allocations: 36166)
+
+
+Started POST "/event" for 127.0.0.1 at 2023-07-29 15:38:08 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/event"):
+  
+Started POST "/event/1" for 127.0.0.1 at 2023-07-29 15:38:29 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/event/1"):
+  
+Started POST "/users" for 127.0.0.1 at 2023-07-29 15:39:02 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"clinton", "lastName"=>"wambua", "userName"=>"clict", "email"=>"clintonwambua@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>""}
+[31mUnpermitted parameters: :is_admin, :profile_picture. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fa740f496a8>, params: {"firstName"=>"clinton", "lastName"=>"wambua", "userName"=>"clict", "email"=>"clintonwambua@gmail.com", "password"=>"[FILTERED]", "is_admin"=>"", "profile_picture"=>"", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "clict"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "clintonwambua@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+Completed 422 Unprocessable Entity in 335ms (ActiveRecord: 1.0ms | Allocations: 4263)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Username has already been taken, Email has already been taken):
+  
+app/controllers/users_controller.rb:14:in `create'
+Started GET "/event/1" for 127.0.0.1 at 2023-07-29 15:39:38 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/event/1"):
+  
+Started PATCH "/event/1" for 127.0.0.1 at 2023-07-29 15:39:45 +0300
+  
+ActionController::RoutingError (No route matches [PATCH] "/event/1"):
+  
