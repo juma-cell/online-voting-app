@@ -3,14 +3,18 @@ import ProfileHeader from "../components/profile-header"
 import IMG from "../assets/Vector (4).png"
 import IMGG from "../assets/avatar.png"
 
+// React Recoil
 import { useRecoilState } from "recoil"
 import { userState } from "../atom/userAtom"
 
 function Profile() {
   const [user, setUser] = useRecoilState(userState)
-  console.log(user)
+  console.log(user.dob.$y)
+
+  const age = 2023 - user.dob.$y
   return (
     <>
+      {/* Profile Header */}
       <div className="w-full pt-10 ">
         <div className=" md:flex justify-end">
           <div className="profileheader_titles">Personal Info</div>
@@ -22,6 +26,7 @@ function Profile() {
         </div>
       </div>
 
+      {/* Body */}
 
       <div className=" md:flex mx-auto p-20">
         <div className="md:w-[50%]">
@@ -49,39 +54,39 @@ function Profile() {
           <p>
             <span className="profile_title">Name:</span>
             <br />
-            John Doe
+            {user?.name}
           </p>
 
           <p className="mt-6">
             <span className="profile_title">Father's/Mother's Name:</span>
             <br />
-            Papa John Doe
+            {user?.fbn}
           </p>
 
           <div className="mt-6 flex">
             <div className="w-[50%]">
               <span className="profile_title">Age:</span>
               <br />
-              19
+              {age}
             </div>
 
             <div className="">
               <span className="profile_title">Mobile Number:</span>
               <br />
-              +91 9191505010
+              {user?.mobileNumber}
             </div>
           </div>
 
           <p className="mt-6">
             <span className="profile_title">Email:</span>
             <br />
-            {user?.email || "john.doe@gmail.com"}
+            {user?.email}
           </p>
 
           <p className="mt-6">
             <span className="profile_title">Aadher Number:</span>
             <br />
-            6100 4080 9126 0909
+            {user?.aadharPassword}
           </p>
 
           <p className="mt-6">
