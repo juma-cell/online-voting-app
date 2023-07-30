@@ -1,28 +1,47 @@
 import React, { useState } from "react"
 import IMG from "../assets/Login Page.png"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
+import Alert from "@mui/material/Alert"
+
+// React Recoil
 import { useRecoilState } from "recoil"
 import { userState } from "../atom/userAtom"
 
 function Login() {
-  
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
   const [user, setUser] = useRecoilState(userState)
+  const [error, setError] = useState(null)
 
   const loginUser = () => {
+    setError(null)
     const enteredEmail = formData.email
     const enteredPassword = formData.password
 
-    if (!enteredEmail && !enteredPassword) return
+    const stateEmail = user.email
+    const statePassword = user.password
 
+    if (!enteredEmail || !enteredPassword) {
+      setError("Please Fill All Input Fields")
+      return
+    }
 
-    setUser({ email: enteredEmail, password: enteredPassword })
-    navigate("/profile")
+    if (enteredEmail !== stateEmail || enteredPassword !== statePassword) {
+      setError("Email and Password are incorrect")
+      return
+    }
+
+    //  Logic for validating users
+
+    //setting app wide state
+    setError(null)
+    setUser({ ...user, loggedIn: true })
+    navigate("/")
   }
 
   return (
@@ -38,7 +57,7 @@ function Login() {
           <div className="signup_label">Email</div>
 
           <input
-            type="text"
+            type="email"
             className="signup_input text-black"
             value={formData.email}
             onChange={(e) =>
@@ -48,7 +67,7 @@ function Login() {
         </div>
 
         <div className="mt-5">
-          <div className="signup_label">Password </div>
+          <div className="signup_label">Password</div>
 
           <input
             type="password"
@@ -63,7 +82,13 @@ function Login() {
         <div className="login_forgot_password">Forgot Password</div>
         <div>
           Not a user?{" "}
-          <span className="login_forgot_password"> Register now </span>
+          <Link to="/signup" className="login_forgot_password">
+            Register now
+          </Link>
+        </div>
+
+        <div className="mt-5 w-[361px]">
+          {error && <Alert severity="error">{error}</Alert>}
         </div>
 
         <div className="mx-auto mt-5">
