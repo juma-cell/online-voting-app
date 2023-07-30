@@ -20,7 +20,7 @@ function Login() {
       </div>
 
       <div className="w-[50%] mx-auto">
-        <div className="login_title mx-auto">Login</div>
+        <div className="login_title mx-auto"></div>
 
         <form onSubmit={handleSubmit} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
 

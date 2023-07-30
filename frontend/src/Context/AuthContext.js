@@ -10,44 +10,35 @@ export default function AuthProvider({ children }) {
   const [onChange, setOnChange] = useState(true);
 
    
-    const login = (email, password) =>{
-        fetch("/login", {
-            method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({email, password})
-        })
-        .then((res)=>res.json())
-        .then((response)=>{
-            // console.log(response) 
-            
-            nav("/")
-
-            if(response.Success)
-            {
-                Swal.fire(
-                    'Success',
-                    response.message,
-                    'success'
-                  )
-            }
-            else if(response.Error)
-            {
-                Swal.fire(
-                    'Error',
-                    response.Error,
-                    'error'
-                  )
-                  setOnChange(!onChange)
-            }
-            else{
-                Swal.fire(
-                    'Error',
-                    "Something went wrong",
-                    'error'
-                  )
-            }
-        })
-    }
+  const login = (email, password) => {
+    fetch("/login", { // Ensure that the URL matches the Rails controller route
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: 'include',
+      body: JSON.stringify({ email, password }) // Ensure that the body contains the required parameters
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.message) {
+          nav("/");
+          Swal.fire(
+            'Success',
+            response.message,
+            'success'
+          );
+        } else {
+          Swal.fire(
+            'Error',
+            "Login failed. Please check your credentials.",
+            'error'
+          );
+        }
+      })
+      .catch((error) => {
+        console.error('Error logging in:', error);
+      });
+  }
+  
 
   const signout = () => {
     fetch("/logout", {
@@ -58,11 +49,11 @@ export default function AuthProvider({ children }) {
         setCurrentUser()
         setOnChange(!onChange);
 
-        if (response.success) {
-          nav("/");
+        if (response.message) {
+          nav("/login");
           Swal.fire(
             'Success',
-            response.success,
+            response.message,
             'success'
           );
 
@@ -103,14 +94,19 @@ export default function AuthProvider({ children }) {
 
   // Fetch current user
   useEffect(() => {
-    fetch("/logged_in", {
+    fetch("/logged_in", { // Ensure that the URL matches the Rails controller route
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: 'include',
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log("current", response)
-        setCurrentUser(response);
+        console.log("current", response);
+        if (response.user) {
+          setCurrentUser(response.user);
+        } else {
+          setCurrentUser(null);
+        }
       });
   }, [onChange]);
 

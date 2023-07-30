@@ -20,16 +20,16 @@ class SessionsController < ApplicationController
       end
     end
     def logged_in
-        if @current_user
-            render json: {
-                message: 'You are logged in',
-                
-            }
-        else
-            render json:{
-                message: 'Please log in'
-            }
-        end
+      if @current_user
+        render json: {
+          message: 'You are logged in',
+          user: @current_user.as_json(only: [:id, :firstName, :lastName, :userName, :email])
+        }
+      else
+        render json: {
+          message: 'Please log in'
+        }
+      end
     end
     def logout
         reset_session
