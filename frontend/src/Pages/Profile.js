@@ -84,7 +84,7 @@ function Profile() {
           </p>
 
           <p className="mt-6">
-            <span className="profile_title">Aadher Number:</span>
+            <span className="profile_title">ID Number:</span>
             <br />
             {user?.aadharPassword}
           </p>

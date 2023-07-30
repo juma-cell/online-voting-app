@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background: #001124;
+  background-color: #001124;
 }
 
 .signup_title {
@@ -20,6 +20,8 @@ body {
   height: 43px;
   flex-shrink: 0;
   background: #fff;
+  color: #000;
+  border-radius: 5px;
 }
 
 .signup_label {

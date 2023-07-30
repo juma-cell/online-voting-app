@@ -77,7 +77,7 @@ function Signup() {
   }
 
   return (
-    <div className="md:flex max-w-6xl py-10 mx-auto">
+    <div className="md:flex py-10 mx-auto">
       <div className="w-[50%] mx-auto">
         <img src={IMG} alt="registration logo" />
       </div>
