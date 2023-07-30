@@ -1,4 +1,3 @@
-# app/controllers/events_options_controller.rb
 class EventsOptionsController < ApplicationController
   before_action :set_events_option, only: [:show, :edit, :update, :destroy]
 

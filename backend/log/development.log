@@ -3598,3 +3598,117 @@ Processing by EventsOptionsController#destroy as */*
 Completed 200 OK in 785ms (Views: 2.6ms | ActiveRecord: 570.4ms | Allocations: 2827)
 
 
+Started GET "/users" for 127.0.0.1 at 2023-07-30 09:19:30 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (31.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.66ms)
+Completed 200 OK in 423ms (Views: 281.1ms | ActiveRecord: 32.2ms | Allocations: 29680)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2023-07-30 09:19:48 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/1"):
+  
+Started GET "/users/1" for 127.0.0.1 at 2023-07-30 09:22:06 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 58.5ms | Allocations: 2323)
+  Rendered layout layouts/application.html.erb (Duration: 58.9ms | Allocations: 2397)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.0ms | Allocations: 6480)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= render @user %>
+    4: 
+    5: <div>
+    6:   <%= link_to "Edit this user", edit_user_path(@user) %> |
+  
+app/views/users/show.html.erb:3
+Started GET "/users/1" for 127.0.0.1 at 2023-07-30 09:27:34 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (21.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.72ms)
+Completed 200 OK in 306ms (Views: 75.6ms | ActiveRecord: 22.3ms | Allocations: 30950)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-07-30 09:29:08 +0300
+Processing by VotingEventsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (11.6ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (0.45ms)
+Completed 200 OK in 83ms (Views: 26.4ms | ActiveRecord: 12.5ms | Allocations: 25226)
+
+
+Started GET "/voting_events/1" for 127.0.0.1 at 2023-07-30 09:29:18 +0300
+Processing by VotingEventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/voting_events_controller.rb:57:in `find_voting_event'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/voting_events_controller.rb:12:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.44ms)
+Completed 200 OK in 80ms (Views: 36.1ms | ActiveRecord: 0.6ms | Allocations: 6629)
+
+
+Started GET "/candidates/1" for 127.0.0.1 at 2023-07-30 09:30:34 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mCandidate Load (24.7ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 47ms (ActiveRecord: 25.8ms | Allocations: 4655)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=1):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates" for 127.0.0.1 at 2023-07-30 09:30:46 +0300
+Processing by CandidatesController#index as */*
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 820)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-07-30 09:30:53 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"candidate"=>{"role"=>"MCA", "userName"=>"Jonathan Kinoti", "user_vote_id"=>1, "voting_event_id"=>1}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.1ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (31.0ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "MCA"], ["userName", "Jonathan Kinoti"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-07-30 06:30:53.693198"], ["updated_at", "2023-07-30 06:30:53.693198"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (97.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.26ms)
+Completed 201 Created in 193ms (Views: 1.8ms | ActiveRecord: 128.6ms | Allocations: 21271)
+
+
+Started GET "/candidates/3" for 127.0.0.1 at 2023-07-30 09:31:04 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.44ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 746)
+
+

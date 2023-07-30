@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:index, :create, :destroy ]
   resources :notification_tables
   resources :voting_events
-  resources :users, only:[:index, :create ]
+  resources :users, only:[:index, :create, :show ]
   put '/users/:id/changepassword', to: 'users#changepassword'
   get "/logged_in", to:'sessions#logged_in'
   post "/login", to: 'sessions#login'
