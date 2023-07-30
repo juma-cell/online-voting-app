@@ -4,10 +4,7 @@ import App from "./App"
 import "./index.css"
 import {
   RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+
 } from "recoil"
 
 import { BrowserRouter } from "react-router-dom"

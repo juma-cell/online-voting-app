@@ -11,20 +11,20 @@ class UsersController < ApplicationController
   
 
   def create
-    user = User.create!(user_params)
+    user = User.create(user_params)
   
-    if user
+    if user.valid?
       session[:user_id] = user.id
       render json: {
-        message:'Registration successful',
-        
+        success: 'Registration successful',
+        user: user.as_json(only: [:id, :firstName, :lastName, :userName, :email])
       }
     else 
       render json: {
-        error:'Registration failed'
-      }
+        error: 'Registration failed',
+        errors: user.errors.full_messages
+      }, status: :unprocessable_entity
     end
-  
   end
 
   def changepassword

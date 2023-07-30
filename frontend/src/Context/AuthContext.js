@@ -9,38 +9,45 @@ export default function AuthProvider({ children }) {
   const [current_user, setCurrentUser] = useState();
   const [onChange, setOnChange] = useState(true);
 
-  const login = (email, password) => {
-    fetch("/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: 'include',
-      body: JSON.stringify({ email, password })
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.message) {
-          nav("/");
-          Swal.fire(
-            'Success',
-            response.message,
-            'success'
-          );
-        } else if (response.status) {
-          Swal.fire(
-            'Error',
-            response.status,
-            'error'
-          );
-          setOnChange(!onChange);
-        } else {
-          Swal.fire(
-            'Error',
-            "Something went wrong",
-            'error'
-          );
-        }
-      });
-  }
+   
+    const login = (email, password) =>{
+        fetch("/login", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({email, password})
+        })
+        .then((res)=>res.json())
+        .then((response)=>{
+            // console.log(response) 
+            
+            nav("/")
+
+            if(response.Success)
+            {
+                Swal.fire(
+                    'Success',
+                    response.message,
+                    'success'
+                  )
+            }
+            else if(response.Error)
+            {
+                Swal.fire(
+                    'Error',
+                    response.Error,
+                    'error'
+                  )
+                  setOnChange(!onChange)
+            }
+            else{
+                Swal.fire(
+                    'Error',
+                    "Something went wrong",
+                    'error'
+                  )
+            }
+        })
+    }
 
   const signout = () => {
     fetch("/logout", {
@@ -80,24 +87,23 @@ export default function AuthProvider({ children }) {
       .then((res) => res.json())
       .then((response) => {
         if (response.error) {
-            Swal.fire('Error', response.error, 'error');
-          } else if (response.success) {
-            nav('/login');
-            Swal.fire('Success', response.message, 'success');
-            setOnChange(!onChange);
-          } else {
-            Swal.fire('Error', 'Something went wrong', 'error');
-          }
-        })
-        .catch((error) => {
-          console.error('Error registering user:', error);
-        });
-    
+          Swal.fire('Error', response.error, 'error');
+        } else if (response.success) {
+          nav('/login');
+          Swal.fire('Success', response.success, 'success');
+          setOnChange(!onChange);
+        } else {
+          Swal.fire('Error', 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        console.error('Error registering user:', error);
+      });
   };
 
   // Fetch current user
   useEffect(() => {
-    fetch("/current", {
+    fetch("/logged_in", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })

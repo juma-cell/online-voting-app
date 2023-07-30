@@ -3712,3 +3712,594 @@ Processing by CandidatesController#show as */*
 Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 746)
 
 
+Started GET "/users" for 127.0.0.1 at 2023-07-30 23:31:24 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 60ms (Views: 38.4ms | ActiveRecord: 1.2ms | Allocations: 31509)
+
+
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:32:56 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started POST "/users" for 127.0.0.1 at 2023-07-30 23:33:31 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"juma", "lastName"=>"muisa", "userName"=>"seyljuma", "email"=>"juma@gmail.com", "password"=>"[FILTERED]", "user"=>{"firstName"=>"juma", "lastName"=>"muisa", "userName"=>"seyljuma", "email"=>"juma@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f9aa07a5250>, params: {"firstName"=>"juma", "lastName"=>"muisa", "userName"=>"seyljuma", "email"=>"juma@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"firstName"=>"juma", "lastName"=>"muisa", "userName"=>"seyljuma", "email"=>"juma@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "seyljuma"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "juma@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "juma"], ["lastName", "muisa"], ["userName", "seyljuma"], ["email", "juma@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-07-30 20:33:31.696975"], ["updated_at", "2023-07-30 20:33:31.696975"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 299ms (Views: 7.2ms | ActiveRecord: 9.3ms | Allocations: 9423)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-30 23:34:08 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 1225)
+
+
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:35:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:35:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:35:36 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:35:42 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:35:50 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:35:53 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:40:45 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:40:46 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started POST "/users" for 127.0.0.1 at 2023-07-30 23:41:51 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"kush", "lastName"=>"moha", "userName"=>"kush01", "email"=>"kush@gmail.com", "password"=>"[FILTERED]", "user"=>{"firstName"=>"kush", "lastName"=>"moha", "userName"=>"kush01", "email"=>"kush@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f9aa09ddfb8>, params: {"firstName"=>"kush", "lastName"=>"moha", "userName"=>"kush01", "email"=>"kush@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"firstName"=>"kush", "lastName"=>"moha", "userName"=>"kush01", "email"=>"kush@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "kush01"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "kush"], ["lastName", "moha"], ["userName", "kush01"], ["email", "kush@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-07-30 20:41:51.369743"], ["updated_at", "2023-07-30 20:41:51.369743"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 299ms (Views: 0.6ms | ActiveRecord: 6.3ms | Allocations: 3726)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:42:14 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 235ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 1828)
+
+
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:42:14 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:42:34 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 288ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 1110)
+
+
+Started GET "/current" for 127.0.0.1 at 2023-07-30 23:42:34 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/current"):
+  
+Started GET "/login" for 127.0.0.1 at 2023-07-30 23:43:54 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+Started GET "/log" for 127.0.0.1 at 2023-07-30 23:43:55 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/log"):
+  
+Started GET "/loggedin" for 127.0.0.1 at 2023-07-30 23:44:04 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/loggedin"):
+  
+Started GET "/logged-in" for 127.0.0.1 at 2023-07-30 23:44:11 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/logged-in"):
+  
+Started GET "/logged" for 127.0.0.1 at 2023-07-30 23:44:16 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/logged"):
+  
+Started GET "/logged_" for 127.0.0.1 at 2023-07-30 23:44:18 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/logged_"):
+  
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:44:20 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 630)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:44:29 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 279ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 1099)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:44:29 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:44:50 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:45:00 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 17ms (Views: 3.0ms | ActiveRecord: 4.4ms | Allocations: 643)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:45:38 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 269ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 1098)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:45:38 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:46:11 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 275ms (Views: 0.5ms | ActiveRecord: 4.1ms | Allocations: 1100)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:46:11 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 13ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:49:18 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 25ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:49:59 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:54:28 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 238ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 1102)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:54:53 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 258ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1099)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:55:02 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:55:10 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 273ms (Views: 0.6ms | ActiveRecord: 0.8ms | Allocations: 1098)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:55:10 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:55:29 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:55:52 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:55:53 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 12ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:55:59 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:56:01 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:56:07 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:56:13 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:56:30 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 13ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:57:26 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:57:30 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:57:39 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 271ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 1098)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:58:02 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:58:13 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 8ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:58:14 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 15ms (Views: 7.1ms | ActiveRecord: 0.2ms | Allocations: 634)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:58:15 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:58:22 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 0.1ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:58:27 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:59:10 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 242ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1098)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:59:24 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 30ms (Views: 11.0ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:59:25 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:59:33 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 274ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1098)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-30 23:59:45 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 22ms (Views: 3.9ms | ActiveRecord: 4.1ms | Allocations: 631)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-07-30 23:59:51 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"kush@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kush@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kush@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 260ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 1098)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-31 00:06:06 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 30ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 10924)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-31 00:06:26 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.56ms)
+Completed 200 OK in 53ms (Views: 31.2ms | ActiveRecord: 2.1ms | Allocations: 30042)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-07-31 00:07:04 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com", "password"=>"[FILTERED]", "user"=>{"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f91043b5550>, params: {"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "hamid01"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hamid@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "hamid"], ["lastName", "abdul"], ["userName", "hamid01"], ["email", "hamid@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-07-30 21:07:04.972968"], ["updated_at", "2023-07-30 21:07:04.972968"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? AND "users"."id" != ? LIMIT ?[0m  [["userName", "hamid01"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "hamid@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 278ms (Views: 4.1ms | ActiveRecord: 8.0ms | Allocations: 10497)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-07-31 00:07:05 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 8ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1231)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-31 00:08:04 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.84ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.2ms | Allocations: 1505)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-07-31 00:08:25 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com", "password"=>"[FILTERED]", "user"=>{"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f90f4082410>, params: {"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"firstName"=>"hamid", "lastName"=>"abdul", "userName"=>"hamid01", "email"=>"hamid@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "hamid01"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hamid@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "hamid01"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hamid@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 261ms (Views: 0.7ms | ActiveRecord: 1.2ms | Allocations: 6844)
+
+
