@@ -43,7 +43,7 @@ function Profile() {
           <p>
             <span className="profile_title">Name:</span>
             <br />
-            
+          
           </p>
 
 

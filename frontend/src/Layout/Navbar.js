@@ -4,7 +4,7 @@ import image1 from '../assets/image1.png';
 import { AuthContext } from '../Context/AuthContext';
 
 function Navbar() {
-  const {  signout } = useContext(AuthContext);
+  const { signout } = useContext(AuthContext);
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
