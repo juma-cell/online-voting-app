@@ -1,104 +1,60 @@
-import React, { useState } from "react"
-import IMG from "../assets/Login Page.png"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
-
-import Alert from "@mui/material/Alert"
-
-// React Recoil
-import { useRecoilState } from "recoil"
-import { userState } from "../atom/userAtom"
+import React, { useContext, useState } from "react";
+import IMG from "../assets/Login Page.png";
+import { AuthContext } from '../Context/AuthContext';
 
 function Login() {
-  const navigate = useNavigate()
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  })
-  const [user, setUser] = useRecoilState(userState)
-  const [error, setError] = useState(null)
+  const { login } = useContext(AuthContext);
 
-  const loginUser = () => {
-    setError(null)
-    const enteredEmail = formData.email
-    const enteredPassword = formData.password
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    const stateEmail = user.email
-    const statePassword = user.password
-
-    if (!enteredEmail || !enteredPassword) {
-      setError("Please Fill All Input Fields")
-      return
-    }
-
-    if (enteredEmail !== stateEmail || enteredPassword !== statePassword) {
-      setError("Email and Password are incorrect")
-      return
-    }
-
-    //  Logic for validating users
-
-    //setting app wide state
-    setError(null)
-    setUser({ ...user, loggedIn: true })
-    navigate("/")
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login( email, password);
+  };
 
   return (
-    <div className="md:flex py-10 mx-auto">
+    <div className="md:flex max-w-6xl py-10 mx-auto">
       <div className="w-[50%] mx-auto">
         <img src={IMG} alt="registration logo" />
       </div>
 
-      <div className="w-[50%] mx-auto my-auto">
-        <div className="signup_title mx-auto">Login</div>
+      <div className="w-[50%] mx-auto">
+        <div className="login_title mx-auto">Login</div>
 
-        <div className="mt-5">
-          <div className="signup_label">Email</div>
+        <form onSubmit={handleSubmit} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
 
-          <input
-            type="email"
-            className="signup_input text-black"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-          />
-        </div>
 
-        <div className="mt-5">
-          <div className="signup_label">Password</div>
+          <div className="mt-5 flex flex-col">
+            <div className="login_label">Email</div>
+            <input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+              placeholder="Enter email"
+            />
+          </div>
 
-          <input
-            type="password"
-            value={formData.password}
-            className="signup_input text-black"
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-          />
-        </div>
+          <div className="mt-5 flex flex-col">
+            <div className="login_label">Password</div>
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+              placeholder="Enter password"
+            />
+          </div>
 
-        <div className="login_forgot_password">Forgot Password</div>
-        <div>
-          Not a user?{" "}
-          <Link to="/signup" className="login_forgot_password">
-            Register now
-          </Link>
-        </div>
-
-        <div className="mt-5 w-[361px]">
-          {error && <Alert severity="error">{error}</Alert>}
-        </div>
-
-        <div className="mx-auto mt-5">
-          <button className="signup_button" onClick={loginUser}>
-            LOGIN
-          </button>
-        </div>
+          <div className="mx-auto mt-5">
+          <button 
+        type="submit"
+         class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+          Login
+        </button>          </div>
+        </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
