@@ -29,6 +29,7 @@ class VotingEventsController < ApplicationController
     end
   end
 
+
   def update
     if @current_user && @voting_event.update(voting_event_params)
       render json: @voting_event.as_json(include: :user)

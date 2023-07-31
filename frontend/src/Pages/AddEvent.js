@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { VoteContext } from '../Context/VoteContext';
 import { AuthContext } from '../Context/AuthContext';
+import { VoteContext } from '../Context/VoteContext';
 
 function AddEvent() {
 
@@ -12,7 +12,7 @@ function AddEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addEvent(eventName,   eventDescription, current_user.id);
+    addEvent(eventName,eventDescription, current_user.id);
   };
   return (
     <div className="min-h-screen flex items-center justify-center">

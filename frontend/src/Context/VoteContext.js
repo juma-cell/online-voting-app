@@ -85,7 +85,7 @@ export default function VoteProvider({ children }) {
   };
 
   const editEvent = (event_name, event_description, start_date, end_date, event_id) => {
-    fetch(`/voting_events/${event_id}`, {
+    fetch (`/voting_events/${event_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
