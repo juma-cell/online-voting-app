@@ -1,4 +1,4 @@
-class VotingEventsController < ApplicationController
+ationController
   include CurrentUserConcern
   before_action :find_voting_event, only: [:show, :update, :destroy]
 
@@ -18,7 +18,7 @@ class VotingEventsController < ApplicationController
   def create
     if @current_user
       @voting_event = @current_user.voting_events.build(voting_event_params)
-  
+
       if @voting_event.save
         render json: @voting_event.as_json(include: :user), status: :created
       else
@@ -28,8 +28,6 @@ class VotingEventsController < ApplicationController
       render json: { error: "Unauthorized, please log in to create a voting event" }, status: :unauthorized
     end
   end
-  
-  
 
   def update
     if @current_user && @voting_event.update(voting_event_params)
@@ -40,7 +38,7 @@ class VotingEventsController < ApplicationController
       render json: { errors: @voting_event.errors.full_messages }, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     if @current_user && @voting_event.destroy
       render json: { message: "Voting event was successfully destroyed" }, status: :ok
@@ -50,7 +48,7 @@ class VotingEventsController < ApplicationController
       render json: { errors: @voting_event.errors.full_messages }, status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def find_voting_event
@@ -61,6 +59,4 @@ class VotingEventsController < ApplicationController
   def voting_event_params
     params.require(:voting_event).permit(:eventsName, :eventsDescription, :duration)
   end
-
-  
 end
