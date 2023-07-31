@@ -37,28 +37,6 @@ function Footer() {
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2023{" "}
           <a href="https://flowbite.com/" className="hover:underline">
-            d
-          </a>
-          . All Rights Reserved.
-        </span>
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2023{" "}
-          <a href="https://flowbite.com/" className="hover:underline">
-            d
-          </a>
-          . All Rights Reserved.
-        </span>
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2023{" "}
-          <a href="https://flowbite.com/" className="hover:underline">
-            d
-          </a>
-          . All Rights Reserved.
-        </span>
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2023{" "}
-          <a href="https://flowbite.com/" className="hover:underline">
-            d
           </a>
           . All Rights Reserved.
         </span>
