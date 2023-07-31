@@ -94,7 +94,7 @@ export default function AuthProvider({ children }) {
 
   // Fetch current user
   useEffect(() => {
-    fetch("/logged_in", { // Ensure that the URL matches the Rails controller route
+    fetch("/logged_in", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: 'include',
