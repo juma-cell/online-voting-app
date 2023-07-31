@@ -1,4 +1,4 @@
-ationController
+class VotingEventsController < ApplicationController
   include CurrentUserConcern
   before_action :find_voting_event, only: [:show, :update, :destroy]
 
