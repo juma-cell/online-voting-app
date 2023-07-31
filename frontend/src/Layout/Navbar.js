@@ -18,7 +18,8 @@ function Navbar() {
           <Link to="/login" className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Login</Link>
           <Link to="/signup" className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Signup</Link>
           <Link to="/profile" className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Profile</Link>
-         
+         <Link to="/addevent" className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Add Event</Link>
+
         </div>
          <div><button
                     onClick={signout}

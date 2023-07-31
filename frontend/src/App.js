@@ -10,15 +10,19 @@ import Voting from "./Pages/Voting";
 import About from "./Pages/About";
 import NotificationList from "./Pages/NotificationList";
 import AuthProvider from "./Context/AuthContext";
+import AddEvent from "./Pages/AddEvent";
+import VoteProvider from "./Context/VoteContext";
 
 
 function App() {
   return (
 <AuthProvider>
+<VoteProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/addevent" element={<AddEvent />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/election" element={<Election />} />
@@ -27,6 +31,7 @@ function App() {
           <Route path="/notification" element={<NotificationList />} />
         </Route>
       </Routes>
+  </VoteProvider>
   </AuthProvider>
   );
 }
