@@ -9,27 +9,24 @@ export default function VoteProvider({ children }) {
   const [votingEvents, setVotingEvents] = useState([]);
   const [onChange, setOnChange] = useState(true);
 
-  const addEvent = (event_name, event_description, start_date, end_date) => {
+  const addEvent = (event_name, event_description, duration) => {
     fetch("/voting_events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        event_name: event_name,
-        event_description: event_description,
-        start_date: start_date,
-        end_date: end_date,
+        eventsName: event_name,
+        eventsDescription: event_description,
+        duration: duration
       }),
     })
       .then((res) => res.json())
       .then((response) => {
         if (response.error) {
-          Swal.fire("Error", response.message, "error");
-        } else if (response.success) {
-          Swal.fire("Success", response.message, "success");
-          setOnChange(!onChange);
+          Swal.fire("Error", response.error, "error");
         } else {
           nav("/"); // Redirect to another page on success if needed
           Swal.fire("Success", response.message, "success");
+          setOnChange(!onChange);
         }
       });
   };
@@ -46,12 +43,10 @@ export default function VoteProvider({ children }) {
       .then((response) => {
         if (response.error) {
           Swal.fire("Error", response.error, "error");
-        } else if (response.success) {
-          Swal.fire("Success", response.success, "success");
-          setOnChange(!onChange);
         } else {
           nav("/"); // Redirect to another page on success if needed
-          Swal.fire("Success", response.success, "success");
+          Swal.fire("Success", response.message, "success");
+          setOnChange(!onChange);
         }
       });
   };
@@ -85,28 +80,28 @@ export default function VoteProvider({ children }) {
   };
 
   const editEvent = (event_name, event_description, start_date, end_date, event_id) => {
-    fetch (`/voting_events/${event_id}`, {
+    fetch(`/voting_events/${event_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        event_name: event_name,
-        event_description: event_description,
-        start_date: start_date,
-        end_date: end_date,
+        eventsName: event_name,
+        eventsDescription: event_description,
+        duration: {
+          start_date: start_date,
+          end_date: end_date,
+        },
       }),
     })
       .then((res) => res.json())
       .then((response) => {
         if (response.error) {
           Swal.fire("Error", response.error, "error");
-        } else if (response.success) {
-          nav("/addVote");
-          Swal.fire("Success", response.success, "success");
-          setOnChange(!onChange);
         } else {
-          Swal.fire("Error", "Something went wrong", "error");
+          nav("/addVote");
+          Swal.fire("Success", response.message, "success");
+          setOnChange(!onChange);
         }
       });
   };

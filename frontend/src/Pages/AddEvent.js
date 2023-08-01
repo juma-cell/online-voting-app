@@ -9,10 +9,16 @@ function AddEvent() {
 
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');
+  const [duration, setDuration] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addEvent(eventName,eventDescription, current_user.id);
+    if (current_user && current_user.id) {
+      addEvent(eventName, eventDescription, duration, current_user.id);
+    } else {
+      // Handle the case when current_user or current_user.id is not available.
+      console.error("User ID is not available.");
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -46,23 +52,15 @@ function AddEvent() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="startDate" className="block text-gray-700 font-bold mb-2">
-              Start Date:
+            <label htmlFor="eventDescription" className="block text-gray-700 font-bold mb-2">
+              Duration:
             </label>
-            <input
-              type="date"
-              id="startDate"
+            <textarea
+              id="duration"
               className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="endDate" className="block text-gray-700 font-bold mb-2">
-              End Date:
-            </label>
-            <input
-              type="date"
-              id="endDate"
-              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500"
+              placeholder="Enter the duration in hours"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
             />
           </div>
           <button
