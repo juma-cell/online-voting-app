@@ -6,74 +6,58 @@ export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const nav = useNavigate();
-  const [current_user, setCurrentUser] = useState();
+  const [current_user, setCurrentUser] = useState(null);
   const [onChange, setOnChange] = useState(true);
 
-   
+  // Function to handle user login
   const login = (email, password) => {
-    fetch("/login", { // Ensure that the URL matches the Rails controller route
+    fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: 'include',
-      body: JSON.stringify({ email, password }) // Ensure that the body contains the required parameters
+      body: JSON.stringify({ email, password })
     })
       .then((res) => res.json())
       .then((response) => {
         if (response.message) {
+          setCurrentUser(response.user);
           nav("/");
-          Swal.fire(
-            'Success',
-            response.message,
-            'success'
-          );
+          Swal.fire('Success', response.message, 'success');
         } else {
-          Swal.fire(
-            'Error',
-            "Login failed. Please check your credentials.",
-            'error'
-          );
+          Swal.fire('Error', "Login failed. Please check your credentials.", 'error');
         }
       })
       .catch((error) => {
         console.error('Error logging in:', error);
       });
-  }
-  
+  };
 
+  // Function to handle user logout
   const signout = () => {
     fetch("/logout", {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((response) => {
-        setCurrentUser()
+        setCurrentUser(null);
         setOnChange(!onChange);
 
         if (response.message) {
           nav("/login");
-          Swal.fire(
-            'Success',
-            response.message,
-            'success'
-          );
-
+          Swal.fire('Success', response.message, 'success');
         } else {
           nav("/login");
-
-          Swal.fire(
-            'Success',
-            response.success,
-            'success'
-          );
+          Swal.fire('Success', response.success, 'success');
         }
       });
-  }
+  };
 
-  const signup = (firstName, lastName,  userName, email, password) => {
+  // Function to handle user registration
+  const signup = (firstName, lastName, userName, email, password) => {
     fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ firstName, lastName, userName, email,  password }),
+      body: JSON.stringify({ firstName, lastName, userName, email, password }),
     })
       .then((res) => res.json())
       .then((response) => {
@@ -92,9 +76,9 @@ export default function AuthProvider({ children }) {
       });
   };
 
-
-   const changePassword = (currentPassword, newPassword) => {
-      fetch("/changepassword", { 
+  // Function to handle changing the user's password
+  const changePassword = (currentPassword, newPassword) => {
+    fetch("/changepassword", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: 'include',
@@ -116,6 +100,7 @@ export default function AuthProvider({ children }) {
   };
 
   useEffect(() => {
+    // Check if the user is logged in when the component mounts
     fetch("/logged_in", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -144,5 +129,5 @@ export default function AuthProvider({ children }) {
     <AuthContext.Provider value={contextData}>
       {children}
     </AuthContext.Provider>
-  )
+  );
 }
