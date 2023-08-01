@@ -92,9 +92,31 @@ export default function AuthProvider({ children }) {
       });
   };
 
-  // Fetch current user
+
+   const changePassword = (currentPassword, newPassword) => {
+      fetch("/changepassword", { 
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      credentials: 'include',
+      body: JSON.stringify({ currentPassword, newPassword })
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.success) {
+          Swal.fire('Success', response.success, 'success');
+        } else if (response.error) {
+          Swal.fire('Error', response.error, 'error');
+        } else {
+          Swal.fire('Error', 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        console.error('Error changing password:', error);
+      });
+  };
+
   useEffect(() => {
-    fetch("/logged_in", { // Ensure that the URL matches the Rails controller route
+    fetch("/logged_in", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: 'include',
@@ -114,7 +136,8 @@ export default function AuthProvider({ children }) {
     login,
     signup,
     current_user,
-    signout
+    signout,
+    changePassword
   }
 
   return (

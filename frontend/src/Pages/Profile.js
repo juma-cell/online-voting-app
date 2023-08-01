@@ -1,123 +1,143 @@
-import React, { useState } from "react";
-import IMG from "../assets/Vector (4).png";
-import IMGG from "../assets/avatar.png";
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import image3 from '../assets/image3.png';
 
-function Profile() {
-  // Example user data (replace with data fetched from your backend)
-  const initialUserData = {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    aadharNumber: "1234-5678-9012",
-    address: "XYZ, Street No. 92, Gurgaon, Uttar Pradesh, 100021",
-    eligible: true,
-    verified: true,
+export default function Profile() {
+  const { current_user } = useContext(AuthContext);
+  const [editing, setEditing] = useState(false);
+  const [editedUser, setEditedUser] = useState({});
+
+  const handleEdit = () => {
+    setEditedUser({ ...current_user });
+    setEditing(true);
   };
 
-  const [userData, setUserData] = useState(initialUserData);
-  const [isEditing, setIsEditing] = useState(false);
+  const handleSave = () => {
+    // Implement your save logic here, e.g., API call to update user data
+    // After saving, you can update the current_user in the AuthContext if needed
+    // For now, we'll just toggle back to viewing mode
+    setEditing(false);
+  };
 
-  // Function to handle profile update
-  const handleProfileUpdate = (updatedData) => {
-    // Send updatedData to your backend to save changes
-    // For simplicity, we will just update the state here
-    setUserData(updatedData);
-    setIsEditing(false); // Close the edit form
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditedUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
 
   return (
-    <>
-      <div className="w-full pt-10">
-        <div className="md:flex justify-end">
-          <div className="profileheader_titles text-white">Elections</div>
-          <div className="profileheader_titles text-white">Contact</div>
-          <div className="profileheader_titles">
-            <button className="signup_button">Vote</button>
-          </div>
-        </div>
-      </div>
+    <div>
+      {current_user && current_user.email ? (
+        <div>
+          <div className="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8">
+            <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
-      <div className="md:flex mx-auto p-20">
-        <div className="md:w-[50%]">
-          <div>
-            <img src={IMGG} alt="" className="mx-auto w-[300px] mb-10" />
-          </div>
-
-          {isEditing ? (
-            <div className="profile_button mx-auto">
-              {/* Edit Profile Form */}
+            <div className="sm:flex sm:justify-between sm:gap-4">
               <div>
-                <label className="text-white">Name:</label>
-                <input
-                  type="text"
-                  value={userData.name}
-                  onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-                />
+                <h3 className="text-lg font-bold text-white sm:text-xl">
+                  {editing ? (
+                    <input
+                      type="text"
+                      name="email"
+                      value={current_user.email} // Show the current email and disable editing
+                      disabled
+                      className="bg-gray-300 text-black"
+                    />
+                  ) : (
+                    current_user.email
+                  )}
+                </h3>
+
+                <div className="mt-4">
+                  {editing ? (
+                    <div>
+                      <label className="block text-white font-medium">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        name="first_name"
+                        value={editedUser.first_name || ''}
+                        onChange={handleChange}
+                        className="bg-white text-black"
+                      />
+                    </div>
+                  ) : (
+                    <p className="text-white">
+                      First Name: {current_user.first_name}
+                    </p>
+                  )}
+
+                  {editing ? (
+                    <div>
+                      <label className="block text-white font-medium">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        name="last_name"
+                        value={editedUser.last_name || ''}
+                        onChange={handleChange}
+                        className="bg-white text-black"
+                      />
+                    </div>
+                  ) : (
+                    <p className="text-white">
+                      Last Name: {current_user.last_name}
+                    </p>
+                  )}
+
+                  {editing ? (
+                    <div>
+                      <label className="block text-white font-medium">
+                        New Password
+                      </label>
+                      <input
+                        type="password"
+                        name="new_password"
+                        value={editedUser.new_password || ''}
+                        onChange={handleChange}
+                        className="bg-white text-black"
+                      />
+                    </div>
+                  ) : (
+                    <p className="text-white">Password: ********</p>
+                  )}
+                </div>
               </div>
 
-              <div>
-                <label className="text-white">Email:</label>
-                <input
-                  type="text"
-                  value={userData.email}
-                  onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+              <div className="hidden sm:block sm:shrink-0">
+                <img
+                  alt="Paul Clapton"
+                  src={image3}
+                  className="h-16 w-16 rounded-lg object-cover shadow-sm"
                 />
               </div>
-
-              <button
-                className="profile_button mx-auto text-white"
-                onClick={() => handleProfileUpdate(userData)}
-              >
-                Save Changes
-              </button>
-
-              <button
-                className="profile_button mx-auto text-white"
-                onClick={() => setIsEditing(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          ) : (
-            <div className="flex mx-auto w-40 pt-10 text-center">
-              <img src={IMG} alt="vector" className="pr-5" />
-              <span className="my-auto text-white" onClick={() => setIsEditing(true)}>
-                Edit Profile
-              </span>
-            </div>
-          )}
-        </div>
-
-        <div className="md:w-[50%]">
-          <p>
-            <span className="profile_title text-white">Name:</span>
-            <br />
-            <span className="text-white">{userData.name}</span>
-          </p>
-
-          <p className="mt-6">
-            <span className="profile_title text-white">Email:</span>
-            <br />
-            <span className="text-white">{userData.email}</span>
-          </p>
-
-          <div className="mt-6 flex">
-            <div className="w-[50%]">
-              <span className="profile_title text-white">Eligible:</span>
-              <br />
-              <span className="text-white">{userData.eligible ? "True" : "False"}</span>
             </div>
 
-            <div className="">
-              <span className="profile_title text-white">Verified:</span>
-              <br />
-              <span className="text-white">{userData.verified ? "True" : "False"}</span>
+            <div className="mt-4">
+              {editing ? (
+                <button
+                  onClick={handleSave}
+                  className="bg-white text-black px-4 py-2 rounded-lg"
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  onClick={handleEdit}
+                  className="bg-white text-black px-4 py-2 rounded-lg"
+                >
+                  Edit Profile
+                </button>
+              )}
             </div>
           </div>
         </div>
-      </div>
-    </>
+      ) : (
+        <p className="text-white text-center">
+          LOGIN TO VIEW THIS PAGE PLEASE
+        </p>
+      )}
+    </div>
   );
 }
-
-export default Profile;
-
