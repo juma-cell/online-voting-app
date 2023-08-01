@@ -12,6 +12,7 @@ import NotificationList from "./Pages/NotificationList";
 import AuthProvider from "./Context/AuthContext";
 import AddEvent from "./Pages/AddEvent";
 import VoteProvider from "./Context/VoteContext";
+import SingleEvent from "./Pages/SingleEvent";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <Route path="/voting" element={<Voting />} />
           <Route path="/about" element={<About />} />
           <Route path="/notification" element={<NotificationList />} />
+          <Route path="/voting_events/:id" element={<SingleEvent />} />
+
         </Route>
       </Routes>
   </VoteProvider>

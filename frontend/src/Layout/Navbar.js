@@ -20,14 +20,14 @@ function Navbar() {
             <>
             <Link
               to="/login"
-              className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-            >
+              className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+              >
               Login
             </Link>
 
              <Link
                 to="/signup"
-                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-orange-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
               >
                 Signup
               </Link>
@@ -39,14 +39,14 @@ function Navbar() {
             <>
               <Link
             to="/"
-            className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-orange-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-          >
+            className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+            >
             Home
           </Link>
 
               <Link
                 to="/profile"
-                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
               >
                 Profile
               </Link>
