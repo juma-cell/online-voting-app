@@ -1,47 +1,57 @@
-import React from "react"
-import image2 from "../assets/image2.png"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
+import IMG from "../assets/instagram.png";
+import IMG2 from "../assets/twitter.png";
+import IMG3 from "../assets/facebook.png";
 
 function Footer() {
   return (
-    <footer className="dark:bg-gray-900 m-0 p-4 md:py-8 bottom-0 left-0 w-full">
-      <div className="w-full mx-auto">
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <div className="flex items-center mb-4 sm:mb-0">
-            <img src={image2} className="h-8 mr-3" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Voting
-            </span>
+    <footer className="flex w-[80%] mx-auto p-5" style={{ color: "white" }}>
+      <div className="flex-1">
+        <p className="login_forgot_password">Contact:</p>
+        1800 9090 32
+        <br />
+        1800 9000 64
+        <p className="login_forgot_password mt-5">Helpline Number:</p>
+        9090 1234 46
+        <br />
+        9090 1234 47
+        <p className="login_forgot_password mt-5">Email:</p>
+        complaint@electionindia.gov.in
+        <br />
+        info@electionindia.gov.in
+      </div>
+      <div className="flex-1">
+        <div className="flex mx-auto space-x-3">
+        
+          <div className="flex-1">
+            <p className="login_forgot_password underline">GetIn</p>
+            <Link to="/#features">Features</Link>
+            <br />
+            <Link to="/about">About</Link>
+            <br />
+            <Link to="/#steps">Steps</Link>
           </div>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-            <li>
-              <Link
-                to="/profile"
-                className="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
-              >
-                Profile
-              </Link>
-            </li>
-
-          
-            <li>
-              <div className="mr-4 hover:underline md:mr-6">Licensing</div>
-            </li>
-            <li>
-              <div className="hover:underline">Contact</div>
-            </li>
-          </ul>
+          <div className="flex-1">
+            <p className="login_forgot_password underline">Follow Us</p>
+            Facebook
+            <br />
+            Instagram
+            <br />
+            Twitter
+          </div>
         </div>
-        <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2023{" "}
-          <a href="https://flowbite.com/" className="hover:underline">
-            d
-          </a>
-          . All Rights Reserved.
-        </span>
+
+        <div className="flex mx-auto space-x-3">
+          <img src={IMG2} alt="instagram" />
+          <img src={IMG3} alt="instagram" />
+          <img src={IMG} alt="instagram" />
+        </div>
+
+        <div className="text-center italic mt-10">&copy;shank.design</div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

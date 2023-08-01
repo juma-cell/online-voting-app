@@ -78,3 +78,43 @@ body {
   font-weight: 400;
   line-height: normal;
 }
+.home_writeup {
+  color: #fff;
+  font-family: DM Serif Display;
+  font-size: 24px; /* Updated font size */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.home_writeup_2 {
+  color: #015fc7;
+  font-family: DM Serif Display;
+  font-size: 48px; /* Updated font size */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.home_writeup_button {
+  width: 100px; /* Updated width */
+  height: 40px; /* Updated height */
+  flex-shrink: 0;
+  border-radius: 10px; /* Updated border-radius */
+  background: #0160c8;
+}
+
+.home_features {
+  color: #dcdbf5;
+  font-family: DM Serif Display;
+  font-size: 18px; /* Updated font size */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.home_image {
+  width: 30px; /* Updated width */
+  height: 30px; /* Updated height */
+  flex-shrink: 0;
+}

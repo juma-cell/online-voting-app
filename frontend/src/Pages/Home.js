@@ -1,21 +1,20 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { VoteContext } from '../Context/VoteContext';
+import IMG from "../assets/vote.png"
 
 function Home() {
   const { votingEvents } = useContext(VoteContext);
 
   useEffect(() => {
-    // Fetch voting events on component mount (if needed)
-    // This is optional, as the data should already be fetched and stored in the VoteProvider.
-    // If data is fetched inside VoteProvider, you may not need this useEffect.
+    // Your useEffect logic here if needed
   }, []);
 
   return (
     <>
       {votingEvents.length > 0 ? (
         votingEvents.map((votingEvent) => (
-          <article key={votingEvent._id} className="rounded-xl border-2 border-gray-100 bg-black text-white mb-8">
+          <article key={votingEvent._id} className="rounded-xl border-2 border-gray-100  text-white mb-8">
             <Link to={`/voting_events/${votingEvent._id}`} className="container mx-auto px-4 text-[10px] font-medium sm:text-xs">
               <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
                 <div>
@@ -34,8 +33,8 @@ function Home() {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  {/* Additional elements or actions related to each event */}
                 </div>
+                
               </div>
             </Link>
           </article>
