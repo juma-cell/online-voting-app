@@ -4,7 +4,7 @@ import image1 from '../assets/image1.png';
 import { AuthContext } from '../Context/AuthContext';
 
 function Navbar() {
-  const { signout } = useContext(AuthContext);
+  const { current_user, signout } = useContext(AuthContext);
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
@@ -20,43 +20,47 @@ function Navbar() {
           >
             Home
           </Link>
+          {!current_user?.email && (
+            <Link
+              to="/login"
+              className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+            >
+              Login
+            </Link>
+          )}
 
-          <Link
-            to="/login"
-            className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-          >
-            Login
-          </Link>
+          {current_user?.email && (
+            <>
+              <Link
+                to="/signup"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-orange-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+              >
+                Signup
+              </Link>
 
-          <Link
-            to="/signup"
-            className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-orange-400 to-blue-600 hover:bg-gradient-to-bl  font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-          >
-            Signup
-          </Link>
+              <Link
+                to="/profile"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+              >
+                Profile
+              </Link>
 
-          <Link
-            to="/profile"
-            className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-400 to-blue-600 hover:bg-gradient-to-bl  font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-          >
-            Profile
-          </Link>
-
-          <Link
-            to="/addevent"
-            className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl  font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-          >
-            Add Event
-          </Link>
-        </div>
-        <div>
-          <button
+              <Link
+                to="/addevent"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+              >
+                Add Event
+              </Link>
+               <button
             onClick={signout}
             className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-red-400 to-red-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
           >
             Log out
           </button>
+            </>
+          )}
         </div>
+        
       </div>
     </nav>
   );
