@@ -57,9 +57,9 @@ export default function VoteProvider({ children }) {
     })
       .then((res) => res.json())
       .then((response) => {
-        if (response.success) {
+        if (response.message) {
           nav("/");
-          Swal.fire("Success", response.success, "success");
+          Swal.fire("Success", response.message, "success");
           setOnChange(!onChange);
         } else {
           Swal.fire("Error", "Something went wrong", "error");
