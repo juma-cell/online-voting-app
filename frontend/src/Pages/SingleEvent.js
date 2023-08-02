@@ -1,18 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import { VoteContext } from '../Context/VoteContext';
 
 function SingleEvent() {
-  const nav = useNavigate();
   const { current_user } = useContext(AuthContext);
-
   const { id } = useParams();
-  const { deleteEvent, event, editEvent, addReply } = useContext(VoteContext); // Assuming you have the relevant functions for events
+  const { deleteEvent, event, addReply } = useContext(VoteContext);
   const [newComment, setNewComment] = useState('');
-  const [SingleEvent, setSingleEvent] = useState([]); // Changed the state name to SingleEvent
+  const [SingleEvent, setSingleEvent] = useState([]);
 
   const handleDelete = () => {
     Swal.fire({
@@ -25,24 +22,24 @@ function SingleEvent() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteEvent(id); // Assuming you have a function to delete events
+        deleteEvent(id);
         Swal.fire('Deleted!', 'Your event has been deleted.', 'success');
       }
     });
   }
 
   const handleSubmit = () => {
-    addReply(newComment, id); // Assuming you have a function to add a reply to an event
+    addReply(newComment, id);
     console.log('submit');
   }
 
   useEffect(() => {
-    fetch(`/events/${id}`) // Assuming you have an endpoint for fetching a single event
+    fetch(`/events/${id}`)
       .then((res) => res.json())
       .then((SingleEvent) => {
         setSingleEvent(SingleEvent);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -78,13 +75,6 @@ function SingleEvent() {
               SingleEvent.replies &&
               SingleEvent.replies.map((reply) => (
                 <div key={reply.id} className="flex mb-4">
-                  <div className="flex-shrink-0 mr-4">
-                    <img
-                      className="h-8 w-8 rounded-full object-cover"
-                      src="https://randomuser.me/api/portraits/men/1.jpg"
-                      alt="User Avatar"
-                    />
-                  </div>
                   <div>
                     <div className="text-sm font-medium text-gray-700">{reply.user_id}</div>
                     <p className="text-gray-700">{reply.reply_content}</p>
@@ -110,6 +100,13 @@ function SingleEvent() {
             </div>
           </form>
         )}
+
+        <div>
+          <Link to={`/candidates/${id}`} className="bg-blue-500 text-white px-4 py-2 rounded-full">
+            Vote for Candidates
+          </Link>
+        </div>
+
       </div>
     </div>
   );

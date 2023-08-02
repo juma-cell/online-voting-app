@@ -23,6 +23,7 @@ export default function AuthProvider({ children }) {
           setCurrentUser(response.user);
           nav("/");
           Swal.fire('Success', response.message, 'success');
+          setOnChange(!onChange)
         } else {
           Swal.fire('Error', "Login failed. Please check your credentials.", 'error');
         }

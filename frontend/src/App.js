@@ -13,6 +13,7 @@ import AuthProvider from "./Context/AuthContext";
 import AddEvent from "./Pages/AddEvent";
 import VoteProvider from "./Context/VoteContext";
 import SingleEvent from "./Pages/SingleEvent";
+import CandidateList from "./Pages/CandidateList";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/notification" element={<NotificationList />} />
           <Route path="/voting_events/:id" element={<SingleEvent />} />
+          <Route path="/candidates" element={<CandidateList/>} />
 
         </Route>
       </Routes>
