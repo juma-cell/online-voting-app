@@ -102,7 +102,7 @@ function SingleEvent() {
         )}
 
         <div>
-          <Link to={`/candidates/${id}`} className="bg-blue-500 text-white px-4 py-2 rounded-full">
+          <Link to={`/candidates/${id}`} className="bg-blue-800 text-white px-4 py-2 rounded-full">
             Vote for Candidates
           </Link>
         </div>

@@ -8058,3 +8058,168 @@ No serializer found for resource: #<Candidate id: 3, role: "MCA", userName: "Jon
 Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 982)
 
 
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:13:14 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:13:34 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:13:37 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:13:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:13:43 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:14:21 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:14:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:15:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:15:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/candidates/1" for 127.0.0.1 at 2023-08-02 13:16:23 +0300
+Processing by CandidatesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCandidate Load (2.0ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 8ms (ActiveRecord: 3.4ms | Allocations: 1047)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=1):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/3" for 127.0.0.1 at 2023-08-02 13:16:45 +0300
+Processing by CandidatesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCandidate Load (0.5ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (9.94ms)
+Completed 200 OK in 61ms (Views: 55.9ms | ActiveRecord: 0.5ms | Allocations: 6423)
+
+
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:21:17 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-02 13:22:10 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-02 13:24:20 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (1.7ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.59ms)
+Completed 200 OK in 271ms (Views: 98.0ms | ActiveRecord: 7.0ms | Allocations: 38984)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-02 13:24:21 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1513)
+
+
+Started GET "/docs/images/people/profile-picture-3.jpg" for 127.0.0.1 at 2023-08-02 13:24:35 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/docs/images/people/profile-picture-3.jpg"):
+  
+Started GET "/docs/images/people/profile-picture-3.jpg" for 127.0.0.1 at 2023-08-02 13:25:31 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/docs/images/people/profile-picture-3.jpg"):
+  
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-02 13:25:31 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-02 13:25:31 +0300
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (2.36ms)
+Completed 200 OK in 18ms (Views: 13.1ms | ActiveRecord: 0.9ms | Allocations: 6222)
+
+
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 75ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 17799)
+
+
+Started GET "/docs/images/people/profile-picture-3.jpg" for 127.0.0.1 at 2023-08-02 13:36:11 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/docs/images/people/profile-picture-3.jpg"):
+  
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-02 13:51:24 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-02 13:51:24 +0300
+Started GET "/docs/images/people/profile-picture-3.jpg" for 127.0.0.1 at 2023-08-02 13:51:24 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/docs/images/people/profile-picture-3.jpg"):
+  
+Processing by SessionsController#logged_in as */*
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.7ms)
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 0.8ms | Allocations: 2172)
+
+
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 855)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-02 14:25:49 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-02 14:25:49 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Processing by SessionsController#logged_in as */*
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  Parameters: {"session"=>{}}
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.42ms)
+Completed 200 OK in 50ms (Views: 25.9ms | ActiveRecord: 3.0ms | Allocations: 3552)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 32ms (Views: 7.8ms | ActiveRecord: 0.8ms | Allocations: 2683)
+
+

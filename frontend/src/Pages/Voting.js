@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Voting() {
-  const { eventId } = useParams();
+  const { id } = useParams();
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleVote = () => {
@@ -10,7 +10,7 @@ function Voting() {
     console.log('Selected Option:', selectedOption);
   };
 
-  // Fetch voting event details and available options based on eventId from the backend
+  // Fetch voting event details and available options based on id from the backend
   const votingEvent = {
     event_name: 'Presidential Election',
     event_description: 'Vote for your favorite presidential candidate.',
