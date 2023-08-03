@@ -1,24 +1,30 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../Context/AuthContext';
-import { VoteContext } from '../Context/VoteContext';
+import React, { useContext, useState } from "react"
+import { AuthContext } from "../Context/AuthContext"
+import { VoteContext } from "../Context/VoteContext"
 
 function AddCandidate() {
-  const { current_user } = useContext(AuthContext);
-  const { Addcandidate } = useContext(VoteContext);
+  const { current_user } = useContext(AuthContext)
+  const { addCandidate } = useContext(VoteContext)
 
-  const [role, setRole] = useState('');
-  const [userName, setUserName] = useState('');
-  const [user_vote_id, setUserVoteId] = useState('');
-  const [voting_event_id, setVotingEventId] = useState('');
+  const [role, setRole] = useState("")
+  const [userName, setUserName] = useState("")
+  const [user_vote_id, setUserVoteId] = useState("")
+  const [voting_event_id, setVotingEventId] = useState("")
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (current_user && current_user.id) {
-        Addcandidate(role, userName, user_vote_id, voting_event_id, current_user.id);
+      addCandidate(
+        role,
+        userName,
+        user_vote_id,
+        voting_event_id,
+        current_user.id
+      )
     } else {
-      console.error("User ID is not available.");
+      console.error("User ID is not available.")
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -26,7 +32,10 @@ function AddCandidate() {
         <h2 className="text-2xl font-bold mb-6">Add a New Candidate</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="role" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="role"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Role:
             </label>
             <input
@@ -39,7 +48,10 @@ function AddCandidate() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="userName" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="userName"
+              className="block text-gray-700 font-bold mb-2"
+            >
               User Name:
             </label>
             <input
@@ -52,7 +64,10 @@ function AddCandidate() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="user_vote_id" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="user_vote_id"
+              className="block text-gray-700 font-bold mb-2"
+            >
               User Vote ID:
             </label>
             <input
@@ -65,7 +80,10 @@ function AddCandidate() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="voting_event_id" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="voting_event_id"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Voting Event ID:
             </label>
             <input
@@ -86,7 +104,7 @@ function AddCandidate() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default AddCandidate;
+export default AddCandidate

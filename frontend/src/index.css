@@ -118,3 +118,7 @@ body {
   height: 30px; /* Updated height */
   flex-shrink: 0;
 }
+
+.home_header {
+  height: 450px;
+}

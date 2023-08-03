@@ -8942,3 +8942,452 @@ Completed 200 OK in 51ms (Views: 32.4ms | ActiveRecord: 0.4ms | Allocations: 423
 Completed 200 OK in 18ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 1573)
 
 
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 09:08:51 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:08:51 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 200 OK in 18ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 7669)
+
+
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (0.84ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 1.1ms | Allocations: 9936)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 09:11:21 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:11:21 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.06ms)
+Completed 200 OK in 10ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 2513)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-08-03 09:12:57 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"blissmaake@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"blissmaake@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "blissmaake@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 200 OK in 27ms (Views: 1.4ms | ActiveRecord: 1.3ms | Allocations: 5710)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-08-03 09:13:41 +0300
+Processing by UsersController#create as */*
+  Parameters: {"firstName"=>"bliss", "lastName"=>"maake", "userName"=>"bliss", "email"=>"bliss@gmail.com", "password"=>"[FILTERED]", "user"=>{"firstName"=>"bliss", "lastName"=>"maake", "userName"=>"bliss", "email"=>"bliss@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f1995c33a38>, params: {"firstName"=>"bliss", "lastName"=>"maake", "userName"=>"bliss", "email"=>"bliss@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"firstName"=>"bliss", "lastName"=>"maake", "userName"=>"bliss", "email"=>"bliss@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? LIMIT ?[0m  [["userName", "bliss"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bliss@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "userName", "email", "password_digest", "profile_picture", "is_admin", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstName", "bliss"], ["lastName", "maake"], ["userName", "bliss"], ["email", "bliss@gmail.com"], ["password_digest", "[FILTERED]"], ["profile_picture", nil], ["is_admin", nil], ["created_at", "2023-08-03 06:13:41.934555"], ["updated_at", "2023-08-03 06:13:41.934555"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."userName" = ? AND "users"."id" != ? LIMIT ?[0m  [["userName", "bliss"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "bliss@gmail.com"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 475ms (Views: 0.9ms | ActiveRecord: 18.3ms | Allocations: 12421)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:13:42 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1406)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-08-03 09:14:01 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"bliss@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"bliss@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bliss@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 451ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 1191)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:14:02 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 765)
+
+
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 09:21:56 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started DELETE "/logout" for 127.0.0.1 at 2023-08-03 09:26:36 +0300
+Processing by SessionsController#logout as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 1.2ms | Allocations: 1042)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:26:36 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 201)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-08-03 09:29:38 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"bliss@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"bliss@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bliss@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 449ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 770)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:29:39 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 753)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 09:32:44 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:32:44 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (2.1ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.18ms)
+Completed 200 OK in 9ms (Views: 4.0ms | ActiveRecord: 2.3ms | Allocations: 2203)
+
+
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 751)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 09:33:08 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:33:08 +0300
+Processing by SessionsController#logged_in as */*
+Processing by VotingEventsController#index as */*
+  Parameters: {"session"=>{}}
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1041)
+
+
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.7ms)
+Completed 200 OK in 20ms (Views: 6.0ms | ActiveRecord: 4.8ms | Allocations: 3475)
+
+
+Started POST "/voting_events" for 127.0.0.1 at 2023-08-03 09:33:58 +0300
+Processing by VotingEventsController#create as */*
+  Parameters: {"eventsName"=>"", "eventsDescription"=>"", "duration"=>"", "voting_event"=>{"eventsName"=>"", "eventsDescription"=>"", "duration"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 422 Unprocessable Entity in 100ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 10797)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 09:33:59 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.1ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (0.99ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 2228)
+
+
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 09:34:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started DELETE "/logout" for 127.0.0.1 at 2023-08-03 09:44:06 +0300
+Processing by SessionsController#logout as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 1.2ms | Allocations: 875)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:44:07 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 201)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-08-03 09:56:33 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"blissmaake@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"blissmaake@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "blissmaake@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 1.7ms | Allocations: 837)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-08-03 09:56:43 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"bliss@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"bliss@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bliss@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 456ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 714)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:56:44 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 796)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 09:58:01 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 09:58:01 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.36ms)
+Completed 200 OK in 12ms (Views: 7.7ms | ActiveRecord: 0.9ms | Allocations: 2458)
+
+
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.1ms | Allocations: 2902)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-08-03 10:03:26 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1", "candidate"=>{"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (1.6ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "President"], ["userName", "Ruto"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-08-03 07:03:26.838626"], ["updated_at", "2023-08-03 07:03:26.838626"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.71ms)
+Completed 201 Created in 47ms (Views: 4.6ms | ActiveRecord: 7.0ms | Allocations: 10971)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 10:03:26 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.5ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (3.11ms)
+Completed 200 OK in 18ms (Views: 11.2ms | ActiveRecord: 1.0ms | Allocations: 2156)
+
+
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 10:06:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 10:59:30 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 10:59:30 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Processing by VotingEventsController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+  Parameters: {"voting_event"=>{}}
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 0.9ms | Allocations: 1459)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (0.9ms)
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 2651)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-08-03 10:59:39 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1", "candidate"=>{"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (0.7ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "President"], ["userName", "Ruto"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-08-03 07:59:40.007356"], ["updated_at", "2023-08-03 07:59:40.007356"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.26ms)
+Completed 201 Created in 19ms (Views: 0.9ms | ActiveRecord: 4.0ms | Allocations: 3944)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 10:59:40 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.4ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (0.84ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.6ms | Allocations: 2103)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-03 11:00:25 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-3.1.4/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-3.1.4/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.6ms | Allocations: 526)
+Completed 200 OK in 15ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 4620)
+
+
+Started GET "/candidates" for 127.0.0.1 at 2023-08-03 11:00:37 +0300
+Processing by CandidatesController#index as HTML
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+No serializer found for resource: #<Candidate id: 3, role: "MCA", userName: "Jonathan Kinoti", user_vote_id: 1, voting_event_id: 1, created_at: "2023-07-30 06:30:53.693198000 +0000", updated_at: "2023-07-30 06:30:53.693198000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Candidate::ActiveRecord_Relation (0.67ms)
+Completed 200 OK in 31ms (Views: 20.2ms | ActiveRecord: 0.8ms | Allocations: 13853)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-08-03 11:33:06 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1", "candidate"=>{"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.1ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (0.6ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "President"], ["userName", "Ruto"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-08-03 08:33:06.486661"], ["updated_at", "2023-08-03 08:33:06.486661"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.27ms)
+Completed 201 Created in 59ms (Views: 1.8ms | ActiveRecord: 9.1ms | Allocations: 24181)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 11:33:06 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.21ms)
+Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 0.4ms | Allocations: 4070)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-08-03 11:33:13 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1", "candidate"=>{"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.1ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (0.5ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "President"], ["userName", "Ruto"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-08-03 08:33:13.771523"], ["updated_at", "2023-08-03 08:33:13.771523"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (16.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.25ms)
+Completed 201 Created in 27ms (Views: 1.0ms | ActiveRecord: 17.2ms | Allocations: 4019)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 11:33:13 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.14ms)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 2115)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-08-03 11:38:45 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1", "candidate"=>{"role"=>"President", "userName"=>"Ruto", "user_vote_id"=>"1", "voting_event_id"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (0.6ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "President"], ["userName", "Ruto"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-08-03 08:38:45.946399"], ["updated_at", "2023-08-03 08:38:45.946399"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (0.19ms)
+Completed 201 Created in 23ms (Views: 0.8ms | ActiveRecord: 8.8ms | Allocations: 4141)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 11:38:45 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.05ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.3ms | Allocations: 2136)
+
+

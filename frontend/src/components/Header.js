@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useNavigate } from "react-router-dom"
-import IMG from "../assets/vote.png"
+import IMG from "../assets/lets vote.jpeg"
+import { AuthContext } from "../Context/AuthContext"
 
 export default function Header() {
   const navigate = useNavigate()
+  const { current_user } = useContext(AuthContext)
 
   const handleLoginClick = () => {
     // Navigate to the login page when the login button is clicked
@@ -15,16 +17,23 @@ export default function Header() {
     navigate("/signup") // Replace "/register" with the actual register page path
   }
 
+  const handleReadMore = () => {
+    window.scrollBy(0, 500)
+  }
   return (
-    <div className="flex max-w-5xl mx-auto space-x-5 min-h-screen">
+    <div className=" flex max-w-5xl mx-auto space-x-5 min-h-screen">
       <div className="flex-1">
         <img src={IMG} alt="logo" className="w-full" />
       </div>
       <div className="flex-1 mt-5">
         <div className="text-right">
-          <button className="signup_button" onClick={handleLoginClick}>
-            Login
-          </button>
+          {current_user ? (
+            ""
+          ) : (
+            <button className="signup_button" onClick={handleLoginClick}>
+              Login
+            </button>
+          )}
         </div>
 
         <div className="home_writeup">Be a part of decision</div>
@@ -32,10 +41,17 @@ export default function Header() {
         <div className="home_writeup_2">Vote Today</div>
 
         <div className="mx-auto space-x-5">
-          <button className="signup_button" onClick={handleRegisterClick}>
-            REGISTER
+          {current_user ? (
+            <p>logged in</p>
+          ) : (
+            <button className="signup_button" onClick={handleRegisterClick}>
+              REGISTER
+            </button>
+          )}
+
+          <button className="signup_button" onClick={handleReadMore}>
+            SEE EVENTS
           </button>
-          <button className="signup_button">READ MORE</button>
         </div>
       </div>
     </div>
