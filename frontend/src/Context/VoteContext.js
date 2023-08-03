@@ -62,7 +62,7 @@ export default function VoteProvider({ children }) {
   };
   
   const addVote = (option_id, event_id) => {
-    fetch(`/voting_events/${event_id}/votes`, {
+    fetch(`/user_votes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
