@@ -4,7 +4,7 @@ import { VoteContext } from '../Context/VoteContext';
 
 function AddCandidate() {
   const { current_user } = useContext(AuthContext);
-  const { Addcandidate } = useContext(VoteContext);
+  const {addCandidate} = useContext(VoteContext);
 
   const [role, setRole] = useState('');
   const [userName, setUserName] = useState('');
@@ -14,7 +14,7 @@ function AddCandidate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (current_user && current_user.id) {
-        Addcandidate(role, userName, user_vote_id, voting_event_id, current_user.id);
+      addCandidate(role, userName, user_vote_id, voting_event_id, current_user.id);
     } else {
       console.error("User ID is not available.");
     }
@@ -81,7 +81,7 @@ function AddCandidate() {
             type="submit"
             className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-600"
           >
-            Create Candidate
+            Add Candidate
           </button>
         </form>
       </div>
