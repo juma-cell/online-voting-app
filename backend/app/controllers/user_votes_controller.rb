@@ -54,6 +54,6 @@ class UserVotesController < ApplicationController
   end
 
   def user_vote_params
-    params.require(:user_vote).permit(:userName, :eventName, :voting_event_id)
+    params.require(:user_vote).permit(:candidateId)
   end
 end
