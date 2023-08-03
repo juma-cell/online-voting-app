@@ -1,4 +1,3 @@
-# app/controllers/user_votes_controller.rb
 class UserVotesController < ApplicationController
   include CurrentUserConcern
   before_action :set_user_vote, only: [:show, :edit, :update, :destroy]
@@ -19,7 +18,7 @@ class UserVotesController < ApplicationController
 
   def create
     @user_vote = UserVote.new(user_vote_params)
-    @user_vote.user_id = @current_user.id
+    @user_vote.user = @current_user
 
     if @user_vote.save
       render json: @user_vote, status: :created
@@ -33,7 +32,7 @@ class UserVotesController < ApplicationController
   end
 
   def update
-    @user_vote.user_id = @current_user.id
+    @user_vote.user = @current_user
 
     if @user_vote.update(user_vote_params)
       render json: @user_vote
@@ -54,6 +53,7 @@ class UserVotesController < ApplicationController
   end
 
   def user_vote_params
-    params.require(:user_vote).permit(:candidateId)
+    params.require(:user_vote).permit(:userName, :eventName, :candidateId)
+    # Add more attributes from the UserVote model that you want to permit here.
   end
 end
