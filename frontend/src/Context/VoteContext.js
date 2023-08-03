@@ -110,6 +110,17 @@ export default function VoteProvider({ children }) {
       });
   };
 
+const fetchCandidates = () => {
+    fetch("/candidates/:id", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        setVotingEvents(response);
+        console.log(response);
+      });
+  };
   const editEvent = (event_name, event_description, start_date, end_date, event_id) => {
     fetch(`/voting_events/${event_id}`, {
       method: "PATCH",
@@ -138,6 +149,7 @@ export default function VoteProvider({ children }) {
   };
 
   useEffect(() => {
+    fetchCandidates();
     fetchEvents();
   }, [onChange]);
 

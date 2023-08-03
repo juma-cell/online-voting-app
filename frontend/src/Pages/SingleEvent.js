@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -82,7 +83,7 @@ function SingleEvent() {
         </div>
 
         <div>
-          <Link to={`/candidates/${id}`} className="bg-blue-800 text-white px-4 py-2 rounded-full">
+          <Link to={`/candidates`} className="bg-blue-800 text-white px-4 py-2 rounded-full">
             Vote for Candidates
           </Link>
         </div>

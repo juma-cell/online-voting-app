@@ -5,16 +5,15 @@ import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
 import Profile from "./Pages/Profile";
 import Login from "./Pages/Login";
-import Election from "./Pages/Election";
 import Voting from "./Pages/Voting";
 import About from "./Pages/About";
 import NotificationList from "./Pages/NotificationList";
 import AuthProvider from "./Context/AuthContext";
-import AddEvent from "./Pages/AddEvent";
 import VoteProvider from "./Context/VoteContext";
 import SingleEvent from "./Pages/SingleEvent";
-import AddCandidate from "./Pages/AddCandidate";
 import EventCandidates from "./Pages/EventCandidates";
+import AddEventAndCandidate from "./Pages/AddEventAndCandidate";
+import Candidates from "./Pages/candidates";
 
 
 function App() {
@@ -25,16 +24,15 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/addevent" element={<AddEvent />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/election" element={<Election />} />
           <Route path="/voting" element={<Voting />} />
           <Route path="/about" element={<About />} />
           <Route path="/notification" element={<NotificationList />} />
           <Route path="/voting_events/:id" element={<SingleEvent />} />
-          <Route path="/candidates" element={<AddCandidate/>} />
           <Route path="/candidates/:id" element={<EventCandidates/>} />
+          <Route path="/addevent" element={<AddEventAndCandidate/>} />
+          <Route path="/candidates" element={<Candidates/>} />
 
         </Route>
       </Routes>
