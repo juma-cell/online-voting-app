@@ -65,41 +65,21 @@ function SingleEvent() {
           </div>
         </div>
 
-        {current_user && (
-          <div className="bg-white rounded-xl shadow-md p-6 mb-4">
-            <h4 className="text-lg font-bold mb-4">replies</h4>
-
-            {SingleEvent.replies && SingleEvent.replies.length === 0 ? (
-              <p>No replies yet.</p>
-            ) : (
-              SingleEvent.replies &&
-              SingleEvent.replies.map((reply) => (
-                <div key={reply.id} className="flex mb-4">
-                  <div>
-                    <div className="text-sm font-medium text-gray-700">{reply.user_id}</div>
-                    <p className="text-gray-700">{reply.reply_content}</p>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        )}
-
-        {current_user && (
-          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-md p-6 mb-4">
-            <h4 className="text-lg font-bold mb-4">Add Reply</h4>
-            <div className="flex mb-4">
-              <input
-                type="text"
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                className="mr-2 px-4 py-1 rounded-full border"
-                placeholder="Enter your reply..."
-              />
-              <button className="bg-gray-200 px-4 py-1 rounded-full">Add Reply</button>
+        {/* Display Candidates */}
+        <div>
+          {SingleEvent && SingleEvent.candidates && SingleEvent.candidates.length > 0 ? (
+            <div className="bg-white rounded-xl shadow-md p-6 mb-4">
+              <h4 className="text-lg font-bold mb-4">Candidates</h4>
+              <ul>
+                {SingleEvent.candidates.map(candidate => (
+                  <li key={candidate.id}>
+                    <Link to={`/candidates/${id}/${candidate.id}`} className="text-blue-800">{candidate.username}</Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </form>
-        )}
+          ) : null}
+        </div>
 
         <div>
           <Link to={`/candidates/${id}`} className="bg-blue-800 text-white px-4 py-2 rounded-full">

@@ -9414,3 +9414,382 @@ Completed 200 OK in 105ms (Views: 45.7ms | ActiveRecord: 1.9ms | Allocations: 39
 >>>>>>> refs/remotes/origin/main
 
 
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 12:04:11 +0300
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 12:04:11 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 18ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 9342)
+
+
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mVotingEvent Load (0.7ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.6ms)
+Completed 200 OK in 34ms (Views: 29.2ms | ActiveRecord: 3.6ms | Allocations: 20213)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-08-03 12:07:21 +0300
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"hamid@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"hamid@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hamid@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 313ms (Views: 0.8ms | ActiveRecord: 1.1ms | Allocations: 23545)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 12:07:21 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1335)
+
+
+Started POST "/candidates" for 127.0.0.1 at 2023-08-03 12:08:11 +0300
+Processing by CandidatesController#create as */*
+  Parameters: {"role"=>"member of parliament", "userName"=>"Jamal", "user_vote_id"=>"1", "voting_event_id"=>"1", "candidate"=>{"role"=>"member of parliament", "userName"=>"Jamal", "user_vote_id"=>"1", "voting_event_id"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events" WHERE "voting_events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mCandidate Create (0.9ms)[0m  [1m[32mINSERT INTO "candidates" ("role", "userName", "user_vote_id", "voting_event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["role", "member of parliament"], ["userName", "Jamal"], ["user_vote_id", 1], ["voting_event_id", 1], ["created_at", "2023-08-03 09:08:11.294915"], ["updated_at", "2023-08-03 09:08:11.294915"]]
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Candidate (1.05ms)
+Completed 201 Created in 47ms (Views: 5.1ms | ActiveRecord: 14.6ms | Allocations: 23631)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 12:08:11 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.4ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (2.54ms)
+Completed 200 OK in 14ms (Views: 8.3ms | ActiveRecord: 0.6ms | Allocations: 1991)
+
+
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 12:16:17 +0300
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 12:16:17 +0300
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Processing by SessionsController#logged_in as */*
+  [1m[36mVotingEvent Load (0.2ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  Parameters: {"session"=>{}}
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.9ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 72ms (Views: 48.5ms | ActiveRecord: 4.2ms | Allocations: 4564)
+
+
+Completed 200 OK in 45ms (Views: 3.4ms | ActiveRecord: 2.1ms | Allocations: 1734)
+
+
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:17:27 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:17:31 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.6ms | Allocations: 1418)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:17:48 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:23:40 +0300
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:23:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.6ms | Allocations: 1461)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:23:45 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:24:02 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 10ms (ActiveRecord: 0.1ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:24:54 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:24:58 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 13ms (ActiveRecord: 0.1ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:24:59 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:25:02 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:25:06 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:25:14 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.1ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:25:15 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.1ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:25:45 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 18ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:25:48 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:26:02 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.1ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:33:06 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 12:34:47 +0300
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:34:47 +0300
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 12:34:47 +0300
+Processing by SessionsController#logged_in as */*
+Processing by VotingEventsController#index as */*
+  Parameters: {"voting_event"=>{}}
+  Parameters: {"session"=>{}}
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (1.28ms)
+Completed 200 OK in 88ms (Views: 8.9ms | ActiveRecord: 1.5ms | Allocations: 14035)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 91ms (Views: 16.1ms | ActiveRecord: 1.5ms | Allocations: 14413)
+
+
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:43:13 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:43:25 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:43:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:48:20 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:48:24 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:48:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:48:26 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms | Allocations: 1036)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:58:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:58:05 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (2.4ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 13ms (ActiveRecord: 3.0ms | Allocations: 1036)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:58:07 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:58:09 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 26ms (ActiveRecord: 0.2ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/events/undefined" for 127.0.0.1 at 2023-08-03 12:58:54 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/events/undefined"):
+  
+Started GET "/candidates/undefined" for 127.0.0.1 at 2023-08-03 12:58:55 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mCandidate Load (0.4ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 12ms (ActiveRecord: 0.4ms | Allocations: 888)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=undefined):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
