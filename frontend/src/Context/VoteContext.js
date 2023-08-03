@@ -30,7 +30,37 @@ export default function VoteProvider({ children }) {
         }
       });
   };
-
+  const addCandidate = (role, userName, user_vote_id, voting_event_id) => {
+    // Make a fetch or API call to add the new candidate
+    const candidateData = {
+      role: role,
+      userName: userName,
+      user_vote_id: user_vote_id,
+      voting_event_id: voting_event_id,
+    };
+  
+    fetch('/candidates', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(candidateData),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.error) {
+          Swal.fire('Error', response.error, 'error');
+        } else {
+          // Handle success response
+          Swal.fire('Success', response.message, 'success');
+          setOnChange(!onChange); // Update the voting state or do any other necessary updates
+        }
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error adding candidate:', error);
+        Swal.fire('Error', 'Failed to add candidate', 'error');
+      });
+  };
+  
   const addVote = (option_id, event_id) => {
     fetch(`/voting_events/${event_id}/votes`, {
       method: "POST",
@@ -51,6 +81,7 @@ export default function VoteProvider({ children }) {
       });
   };
 
+  
   const deleteVoteEvent = (event_id) => {
     fetch(`/voting_events/${event_id}`, {
       method: "DELETE",
@@ -116,6 +147,7 @@ export default function VoteProvider({ children }) {
     deleteVoteEvent,
     editEvent,
     addEvent,
+    addCandidate,
   };
 
   return <VoteContext.Provider value={contextData}>{children}</VoteContext.Provider>;
