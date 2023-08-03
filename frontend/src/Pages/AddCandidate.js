@@ -99,7 +99,7 @@ function AddCandidate() {
             type="submit"
             className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-600"
           >
-            Create Candidate
+            Add Candidate
           </button>
         </form>
       </div>
