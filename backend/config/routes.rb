@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :candidates
   resources :user_votes
   resources :events_options
+  resources :votes,only: [:create]
   resources :feedbacks, only: [:index, :create, :destroy ]
   resources :notification_tables
   resources :voting_events

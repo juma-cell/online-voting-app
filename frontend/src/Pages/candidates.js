@@ -5,6 +5,7 @@ function Candidates() {
   const [candidatesData, setCandidatesData] = useState([]);
   const [selectedCandidateId, setSelectedCandidateId] = useState(null);
   const [hasVoted, setHasVoted] = useState(false);
+  const [userVoteId, setUserVoteId] = useState(null); // State to store user_vote ID
   const { addVote } = useContext(VoteContext);
 
   useEffect(() => {
@@ -14,6 +15,17 @@ function Candidates() {
       .catch((error) => console.error('Error fetching candidates:', error));
   }, []);
 
+  useEffect(() => {
+    // Fetch the user_vote ID when the component mounts
+    fetch('/user_votes')
+      .then((response) => response.json())
+      .then((data) => {
+        setUserVoteId(data.id); // Store the user_vote ID in the state
+        setHasVoted(!!data.id); // Update hasVoted based on whether the user_vote ID exists
+      })
+      .catch((error) => console.error('Error fetching user_vote ID:', error));
+  }, []);
+
   const handleVote = () => {
     // Send the vote to the server
     fetch('/user_votes', {
@@ -21,7 +33,7 @@ function Candidates() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ candidateId: selectedCandidateId }),
+      body: JSON.stringify({ candidateId: selectedCandidateId, user_vote: userVoteId }), // Use 'user_vote' instead of 'userVoteId'
     })
       .then((response) => response.json())
       .then((data) => {

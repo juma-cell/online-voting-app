@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-
+  has_many :votes
   has_many :feedbacks
   has_many :user_votes
   has_many :voting_events

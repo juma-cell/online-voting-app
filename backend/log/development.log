@@ -11529,3 +11529,362 @@ ActionController::ParameterMissing (param is missing or the value is empty: user
   
 app/controllers/user_votes_controller.rb:56:in `user_vote_params'
 app/controllers/user_votes_controller.rb:20:in `create'
+Started GET "/user_vote" for 127.0.0.1 at 2023-08-03 21:32:37 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user_vote"):
+  
+Started GET "/candidates" for 127.0.0.1 at 2023-08-03 21:32:37 +0300
+Processing by CandidatesController#index as */*
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+No serializer found for resource: #<Candidate id: 3, role: "MCA", userName: "Jonathan Kinoti", user_vote_id: 1, voting_event_id: 1, created_at: "2023-07-30 06:30:53.693198000 +0000", updated_at: "2023-07-30 06:30:53.693198000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Candidate::ActiveRecord_Relation (2.04ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.9ms | Allocations: 2279)
+
+
+Started GET "/candidates" for 127.0.0.1 at 2023-08-03 21:32:45 +0300
+Processing by CandidatesController#index as */*
+Started GET "/user_vote" for 127.0.0.1 at 2023-08-03 21:32:45 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user_vote"):
+  
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+No serializer found for resource: #<Candidate id: 3, role: "MCA", userName: "Jonathan Kinoti", user_vote_id: 1, voting_event_id: 1, created_at: "2023-07-30 06:30:53.693198000 +0000", updated_at: "2023-07-30 06:30:53.693198000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Candidate::ActiveRecord_Relation (5.85ms)
+Completed 200 OK in 138ms (Views: 128.9ms | ActiveRecord: 0.3ms | Allocations: 14027)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2023-08-03 21:32:46 +0300
+Processing by SessionsController#logged_in as */*
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Started GET "/voting_events" for 127.0.0.1 at 2023-08-03 21:32:46 +0300
+Started GET "/candidates/:id" for 127.0.0.1 at 2023-08-03 21:32:46 +0300
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Processing by VotingEventsController#index as */*
+Processing by CandidatesController#show as */*
+Completed 200 OK in 18ms (Views: 11.8ms | ActiveRecord: 0.3ms | Allocations: 3590)
+
+
+  Parameters: {"voting_event"=>{}}
+  Parameters: {"id"=>":id", "candidate"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mVotingEvent Load (0.3ms)[0m  [1m[34mSELECT "voting_events".* FROM "voting_events"[0m
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/voting_events_controller.rb:7:in `index'
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+No serializer found for resource: #<VotingEvent id: 1, eventsName: "general elections", eventsDescription: "voting for president of the country", duration: 12, user_id: 1, created_at: "2023-07-29 11:24:57.018921000 +0000", updated_at: "2023-07-29 11:24:57.018921000 +0000">
+Completed 404 Not Found in 23ms (ActiveRecord: 0.9ms | Allocations: 6843)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with VotingEvent::ActiveRecord_Relation (2.47ms)
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=:id):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 200 OK in 41ms (Views: 32.9ms | ActiveRecord: 1.5ms | Allocations: 9142)
+
+
+Started POST "/user_votes" for 127.0.0.1 at 2023-08-03 21:32:48 +0300
+Processing by UserVotesController#create as */*
+  Parameters: {"candidateId"=>9, "userVoteId"=>nil, "user_vote"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 400 Bad Request in 14ms (ActiveRecord: 0.3ms | Allocations: 1010)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user_vote
+Did you mean?  userVoteId):
+  
+app/controllers/user_votes_controller.rb:56:in `user_vote_params'
+app/controllers/user_votes_controller.rb:20:in `create'
+Started GET "/candidates" for 127.0.0.1 at 2023-08-03 21:36:42 +0300
+Processing by CandidatesController#index as */*
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+No serializer found for resource: #<Candidate id: 3, role: "MCA", userName: "Jonathan Kinoti", user_vote_id: 1, voting_event_id: 1, created_at: "2023-07-30 06:30:53.693198000 +0000", updated_at: "2023-07-30 06:30:53.693198000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Candidate::ActiveRecord_Relation (2.0ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.3ms | Allocations: 1686)
+
+
+Started GET "/user_vote" for 127.0.0.1 at 2023-08-03 21:36:42 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user_vote"):
+  
+Started GET "/candidates" for 127.0.0.1 at 2023-08-03 21:37:17 +0300
+Processing by CandidatesController#index as */*
+Started GET "/user_votes" for 127.0.0.1 at 2023-08-03 21:37:17 +0300
+Processing by UserVotesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  [1m[36mUserVote Load (0.5ms)[0m  [1m[34mSELECT "user_votes".* FROM "user_votes"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+  ↳ app/controllers/user_votes_controller.rb:7:in `index'
+No serializer found for resource: #<Candidate id: 3, role: "MCA", userName: "Jonathan Kinoti", user_vote_id: 1, voting_event_id: 1, created_at: "2023-07-30 06:30:53.693198000 +0000", updated_at: "2023-07-30 06:30:53.693198000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Candidate::ActiveRecord_Relation (1.88ms)
+Completed 200 OK in 31ms (Views: 29.6ms | ActiveRecord: 0.2ms | Allocations: 5418)
+
+
+No serializer found for resource: #<UserVote id: 1, userName: "doejohn", eventName: "general elections", created_at: "2023-07-29 11:36:24.493429000 +0000", updated_at: "2023-07-29 11:36:24.493429000 +0000", voting_event_id: 1, user_id: 1>
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with UserVote::ActiveRecord_Relation (0.35ms)
+Completed 200 OK in 53ms (Views: 48.6ms | ActiveRecord: 1.1ms | Allocations: 17748)
+
+
+Started POST "/user_votes" for 127.0.0.1 at 2023-08-03 21:37:34 +0300
+Processing by UserVotesController#create as */*
+  Parameters: {"candidateId"=>9, "user_vote"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.2ms | Allocations: 949)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user_vote):
+  
+app/controllers/user_votes_controller.rb:56:in `user_vote_params'
+app/controllers/user_votes_controller.rb:20:in `create'
+Started POST "/user_votes" for 127.0.0.1 at 2023-08-03 22:09:55 +0300
+Processing by UserVotesController#create as */*
+  Parameters: {"candidateId"=>9, "user_vote"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_user_concern.rb:10:in `set_current_user'
+Completed 400 Bad Request in 9ms (ActiveRecord: 1.5ms | Allocations: 1108)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user_vote):
+  
+app/controllers/user_votes_controller.rb:56:in `user_vote_params'
+app/controllers/user_votes_controller.rb:20:in `create'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateVotes (20230803231730)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "post_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230803231730"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/votes" for 127.0.0.1 at 2023-08-04 02:44:29 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/votes"):
+  
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230727085605)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "firstName" varchar, "lastName" varchar, "userName" varchar, "email" varchar, "password_digest" varchar, "profile_picture" varchar, "is_admin" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727085605"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVotingEvents (20230727093856)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "voting_events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "eventsName" varchar, "eventsDescription" text, "duration" integer, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f556fc4616"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_voting_events_on_user_id" ON "voting_events" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727093856"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateFeedbacks (20230727101152)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "feedbacks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "eventName" varchar, "message" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c57bb6cf28"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_feedbacks_on_user_id" ON "feedbacks" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727101152"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEventsOptions (20230727102803)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "events_options" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "options" varchar, "eventName" varchar, "voting_event_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_afeb3bd30d"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_events_options_on_voting_event_id" ON "events_options" ("voting_event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727102803"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserVotes (20230727105315)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "userName" varchar, "vote_id" integer, "eventName" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727105315"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCandidates (20230727105535)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "candidates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar, "userName" varchar, "user_vote_id" integer NOT NULL, "voting_event_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_9d45c22de2"
+FOREIGN KEY ("user_vote_id")
+  REFERENCES "user_votes" ("id")
+, CONSTRAINT "fk_rails_f4183070d5"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_candidates_on_user_vote_id" ON "candidates" ("user_vote_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_candidates_on_voting_event_id" ON "candidates" ("voting_event_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230727105535"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveVoteIdFromUserVotes (20230729102748)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "vote_id" integer DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "auser_votes" ("id","userName","vote_id","eventName","created_at","updated_at")
+                     SELECT "id","userName","vote_id","eventName","created_at","updated_at" FROM "user_votes"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "user_votes"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_votes" ("id","userName","eventName","created_at","updated_at")
+                     SELECT "id","userName","eventName","created_at","updated_at" FROM "auser_votes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "auser_votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230729102748"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddVotingEventIdToUserVotes (20230729102829)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "auser_votes" ("id","userName","eventName","created_at","updated_at")
+                     SELECT "id","userName","eventName","created_at","updated_at" FROM "user_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "user_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_votes" ("id","userName","eventName","created_at","updated_at")
+                     SELECT "id","userName","eventName","created_at","updated_at" FROM "auser_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "auser_votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_user_votes_on_voting_event_id" ON "user_votes" ("voting_event_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_auser_votes_on_voting_event_id" ON "auser_votes" ("voting_event_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "auser_votes" ("id","userName","eventName","created_at","updated_at","voting_event_id")
+                     SELECT "id","userName","eventName","created_at","updated_at","voting_event_id" FROM "user_votes"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "user_votes"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL, CONSTRAINT "fk_rails_a03986bdf7"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_user_votes_on_voting_event_id" ON "user_votes" ("voting_event_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_votes" ("id","userName","eventName","created_at","updated_at","voting_event_id")
+                     SELECT "id","userName","eventName","created_at","updated_at","voting_event_id" FROM "auser_votes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "auser_votes"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230729102829"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserIdToUserVotes (20230729105856)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_auser_votes_on_voting_event_id" ON "auser_votes" ("voting_event_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "auser_votes" ("id","userName","eventName","created_at","updated_at","voting_event_id")
+                     SELECT "id","userName","eventName","created_at","updated_at","voting_event_id" FROM "user_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "user_votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_a03986bdf7"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_user_votes_on_voting_event_id" ON "user_votes" ("voting_event_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "user_votes" ("id","userName","eventName","created_at","updated_at","voting_event_id")
+                     SELECT "id","userName","eventName","created_at","updated_at","voting_event_id" FROM "auser_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "auser_votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_user_votes_on_user_id" ON "user_votes" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "auser_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_auser_votes_on_user_id" ON "auser_votes" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_auser_votes_on_voting_event_id" ON "auser_votes" ("voting_event_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "auser_votes" ("id","userName","eventName","created_at","updated_at","voting_event_id","user_id")
+                     SELECT "id","userName","eventName","created_at","updated_at","voting_event_id","user_id" FROM "user_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "user_votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "user_votes" ("id" integer NOT NULL PRIMARY KEY, "userName" varchar DEFAULT NULL, "eventName" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "voting_event_id" integer NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_a03986bdf7"
+FOREIGN KEY ("voting_event_id")
+  REFERENCES "voting_events" ("id")
+, CONSTRAINT "fk_rails_917cb3e60d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_user_votes_on_voting_event_id" ON "user_votes" ("voting_event_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_user_votes_on_user_id" ON "user_votes" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "user_votes" ("id","userName","eventName","created_at","updated_at","voting_event_id","user_id")
+                     SELECT "id","userName","eventName","created_at","updated_at","voting_event_id","user_id" FROM "auser_votes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "auser_votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230729105856"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVotes (20230803231730)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "candidate_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230803231730"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-03 23:53:02.973991"], ["updated_at", "2023-08-03 23:53:02.973991"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/votes" for 127.0.0.1 at 2023-08-04 09:20:07 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/votes"):
+  
+Started GET "/candidates" for 127.0.0.1 at 2023-08-04 09:20:24 +0300
+Processing by CandidatesController#index as */*
+  [1m[36mCandidate Load (0.4ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 40ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 10386)
+
+
+Started GET "/candidates/candidates_id/votes" for 127.0.0.1 at 2023-08-04 09:22:59 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/candidates/candidates_id/votes"):
+  
+Started GET "/candidates/candidates_id" for 127.0.0.1 at 2023-08-04 09:23:09 +0300
+Processing by CandidatesController#show as */*
+  Parameters: {"id"=>"candidates_id"}
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:44:in `set_candidate'
+Completed 404 Not Found in 21ms (ActiveRecord: 1.4ms | Allocations: 7729)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Candidate with 'id'=candidates_id):
+  
+app/controllers/candidates_controller.rb:44:in `set_candidate'
+Started GET "/user_votes" for 127.0.0.1 at 2023-08-04 09:24:27 +0300
+Processing by UserVotesController#index as */*
+  [1m[36mUserVote Load (0.3ms)[0m  [1m[34mSELECT "user_votes".* FROM "user_votes"[0m
+  ↳ app/controllers/user_votes_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 29ms (Views: 5.8ms | ActiveRecord: 0.3ms | Allocations: 4745)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-04 09:46:38 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.7.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.7.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.9ms | Allocations: 463)
+Completed 200 OK in 7ms (Views: 4.3ms | Allocations: 1295)
+
+
