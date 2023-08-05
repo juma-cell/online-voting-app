@@ -1,0 +1,551 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "online voting app",
+    "dateExported": "2023-08-04T06:29:07.548Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "user",
+            "containerId": "",
+            "created": "2023-07-30T06:34:53.759Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "7c409ef2-bb6b-42da-aa83-fe5e5b523553",
+            "name": "voting_event",
+            "containerId": "",
+            "created": "2023-07-30T06:35:31.249Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "717910ae-c36c-4403-b58a-d823a6a7e819",
+            "name": "feedbacks",
+            "containerId": "",
+            "created": "2023-07-30T06:35:57.617Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "471e7c66-a1ce-4849-9334-d9a81340af01",
+            "name": "candidates",
+            "containerId": "",
+            "created": "2023-07-30T06:36:23.584Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "dbff6dd7-5fb8-42ce-b59e-3928895e8cb6",
+            "name": "user_vote",
+            "containerId": "",
+            "created": "2023-07-30T06:36:55.999Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "f51b673f-5301-4c78-b0b2-a954efe4f12a",
+            "name": "events_options",
+            "containerId": "",
+            "created": "2023-07-30T06:37:23.663Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "788ea611-67ab-4864-b3bc-fc7831638f4a",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "get user",
+            "url": "http://localhost:3000/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-27T19:02:56.428Z",
+            "modified": "2023-07-28T04:59:44.412Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "09c855c2-a212-423e-be7b-b051e930440b",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "7c409ef2-bb6b-42da-aa83-fe5e5b523553",
+            "name": "get voting events",
+            "url": "http://localhost:3000/voting_events",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-28T18:12:31.664Z",
+            "modified": "2023-07-28T18:32:43.804Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8a0ecab0-3bb1-4c5d-b7da-07baa074aa98",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "717910ae-c36c-4403-b58a-d823a6a7e819",
+            "name": "get feedbacks",
+            "url": "http://localhost:3000/feedbacks",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-29T07:54:37.643Z",
+            "modified": "2023-07-29T08:02:25.817Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "392f5d7c-eaba-4bd7-ad7b-0fa0d9db65bc",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "471e7c66-a1ce-4849-9334-d9a81340af01",
+            "name": "get candidates",
+            "url": "http://localhost:3000/candidates",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-29T09:56:29.988Z",
+            "modified": "2023-07-29T10:02:05.884Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "71a147c0-8884-4647-9561-212c5819f908",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dbff6dd7-5fb8-42ce-b59e-3928895e8cb6",
+            "name": "get user_vote",
+            "url": "http://localhost:3000/user_votes",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-29T11:20:07.566Z",
+            "modified": "2023-07-29T11:23:08.501Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5e0d8a90-89d7-41bb-929d-4185b9a253ec",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "f51b673f-5301-4c78-b0b2-a954efe4f12a",
+            "name": "get event option",
+            "url": "http://localhost:3000/events_options",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-29T14:53:00.285Z",
+            "modified": "2023-07-29T14:56:57.215Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3defe2b4-422c-4bd9-9032-6f37995fd7ea",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "717910ae-c36c-4403-b58a-d823a6a7e819",
+            "name": "add feedback",
+            "url": "http://127.0.0.1:3000/feedbacks",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-07-29T07:55:03.521Z",
+            "modified": "2023-07-29T08:14:16.655Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"feedback\": {\n    \"eventName\": \"general elections\",\n    \"message\": \"ended early\"\n  }\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e8e3d8ba-2910-4e62-9309-b88ff3d5204d",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dbff6dd7-5fb8-42ce-b59e-3928895e8cb6",
+            "name": "add user votes",
+            "url": "http://127.0.0.1:3000/user_votes",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-07-29T11:20:33.077Z",
+            "modified": "2023-07-31T06:57:33.470Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_vote\": {\n    \"userName\": \"doejohn\",\n    \"eventName\": \"by elections\",\n    \"voting_event_id\": \"1\"\n  }\n}\n\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "32a8f0c9-57ac-4de1-a128-3ade2429af61",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "f51b673f-5301-4c78-b0b2-a954efe4f12a",
+            "name": "add events options",
+            "url": "http://127.0.0.1:3000/events_options",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-07-29T14:53:25.027Z",
+            "modified": "2023-07-29T15:03:41.790Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"events_option\": {\n    \"options\": \"yes or no\",\n    \"eventName\": \"referendum\",\n    \"voting_event_id\": 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "06cee3da-2f19-4f7f-ac02-eaf6b06f3d8e",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "get specific user",
+            "url": "http://localhost:3000/users/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-30T06:17:51.474Z",
+            "modified": "2023-07-30T06:19:49.225Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b976f3cc-f71e-48f9-b0a5-2a471d9bd273",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "7c409ef2-bb6b-42da-aa83-fe5e5b523553",
+            "name": "get specific voting events ",
+            "url": "http://localhost:3000/voting_events/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-30T06:28:13.616Z",
+            "modified": "2023-07-30T06:29:18.906Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "15731839-71ab-4c56-b4bc-6341b8cc7701",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "471e7c66-a1ce-4849-9334-d9a81340af01",
+            "name": "get specific candidate",
+            "url": "http://localhost:3000/candidates/3",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-30T06:29:57.480Z",
+            "modified": "2023-07-30T06:31:04.440Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8241a30a-ea17-4a61-b1df-da26b1bbbf38",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "logged_in user",
+            "url": "http://localhost:3000/logged_in",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-07-28T05:00:51.728Z",
+            "modified": "2023-07-28T05:13:39.573Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a2fde7fa-1ac8-4325-afa0-274f67d3b22c",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "7c409ef2-bb6b-42da-aa83-fe5e5b523553",
+            "name": "add voting event",
+            "url": "http://127.0.0.1:3000/voting_events",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-07-28T18:13:58.299Z",
+            "modified": "2023-07-29T06:54:29.631Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"voting_event\": {\n    \"eventsName\": \"general elections\",\n    \"eventsDescription\": \"voting for president of the country\",\n    \"duration\": \"12\"\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5384d004-3058-416b-bb1b-d4360b30a0b4",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "717910ae-c36c-4403-b58a-d823a6a7e819",
+            "name": "delete feedback",
+            "url": "http://localhost:3000/feedbacks/2",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-07-29T07:59:07.376Z",
+            "modified": "2023-07-31T06:53:49.964Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fe39c9d2-a28c-4322-8937-5020f1e218d7",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "471e7c66-a1ce-4849-9334-d9a81340af01",
+            "name": "add candidate",
+            "url": "http://127.0.0.1:3000/candidates",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-07-29T09:56:52.052Z",
+            "modified": "2023-07-29T11:41:03.927Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"candidate\": {\n    \"role\": \"MCA\",\n    \"userName\": \"Jonathan Kinoti\",\n    \"user_vote_id\": 1,\n    \"voting_event_id\": 1\n  }\n}\n\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4fceaabf-3f6b-4eba-a9fc-9bffcb49a3da",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dbff6dd7-5fb8-42ce-b59e-3928895e8cb6",
+            "name": "update user vote",
+            "url": "http://127.0.0.1:3000/user_votes/1",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2023-07-29T11:20:58.657Z",
+            "modified": "2023-07-29T11:32:21.674Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_vote\": {\n    \"userName\": \"doejohn\",\n    \"eventName\": \" by-elections\",\n    \"voting_event_id\": \"1\"\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "62b9fadf-049e-40bc-a26e-59b7d3d1c657",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "f51b673f-5301-4c78-b0b2-a954efe4f12a",
+            "name": "update events option",
+            "url": "http://127.0.0.1:3000/events_options/1",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2023-07-29T14:54:05.824Z",
+            "modified": "2023-07-29T15:09:41.259Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"events_option\": {\n    \"options\": \"yes , no , maybe\",\n    \"eventName\": \"referendum\",\n    \"voting_event_id\": 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ba0ee1b1-42f9-465b-9ce4-1eb151bfe1eb",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "7c409ef2-bb6b-42da-aa83-fe5e5b523553",
+            "name": "update voting event",
+            "url": "http://127.0.0.1:3000/voting_events/2",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-07-29T07:16:24.955Z",
+            "modified": "2023-07-29T07:50:03.628Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"voting_event\": {\n    \"eventsName\": \"by-elections\",\n    \"eventsDescription\": \"voting for president of the country and members of parliament\",\n    \"duration\": \"12\"\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2937e1f4-1d79-4582-9d45-124db0d516b8",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "471e7c66-a1ce-4849-9334-d9a81340af01",
+            "name": "update candidate",
+            "url": "http://127.0.0.1:3000/candidates/3",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-07-29T10:00:16.392Z",
+            "modified": "2023-07-31T06:56:01.721Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"candidate\": {\n    \"role\": \"MCA\",\n    \"userName\": \"Jonathan Kinoti\",\n    \"user_vote_id\": 1,\n    \"voting_event_id\": 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "625e8c43-cf56-4dfe-a3bf-2981f874bfc9",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dbff6dd7-5fb8-42ce-b59e-3928895e8cb6",
+            "name": "delete user vote",
+            "url": "http://localhost:3000/user_votes/1",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-07-29T11:21:29.874Z",
+            "modified": "2023-07-29T11:33:03.182Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ffe97828-6b01-4d14-b2f8-b209e816c736",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "change password",
+            "url": "http://localhost:3000//users/1/changepassword",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-07-29T14:37:26.386Z",
+            "modified": "2023-07-29T14:46:55.667Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "current_password",
+                        "value": "tttt"
+                    },
+                    {
+                        "name": "new_password",
+                        "value": "rrrr"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "fc71865f-15e4-460c-82fb-559f5fcd759c",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "f51b673f-5301-4c78-b0b2-a954efe4f12a",
+            "name": "delete events options",
+            "url": "http://localhost:3000/events_options/1",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-07-29T14:54:50.445Z",
+            "modified": "2023-07-29T15:11:49.306Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9750dceb-16f3-47d6-baee-a2250bea8cbb",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "registration",
+            "url": "http://127.0.0.1:3000/users",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-07-27T19:06:41.407Z",
+            "modified": "2023-07-28T06:34:24.033Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "firstName",
+                        "value": "John"
+                    },
+                    {
+                        "name": "lastName",
+                        "value": "Doe"
+                    },
+                    {
+                        "name": "userName",
+                        "value": "doejohn"
+                    },
+                    {
+                        "name": "email",
+                        "value": "t@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "tttt"
+                    },
+                    {
+                        "name": "is_admin",
+                        "value": ""
+                    },
+                    {
+                        "name": "profile_picture",
+                        "value": ""
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "208938b0-3b31-4951-a656-4ab89c485ab9",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "7c409ef2-bb6b-42da-aa83-fe5e5b523553",
+            "name": "delete voting event",
+            "url": "http://localhost:3000/voting_events/2",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-07-29T07:56:08.386Z",
+            "modified": "2023-07-31T06:52:27.630Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "82ec82a7-0092-40a3-942e-3261ca29db1a",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "471e7c66-a1ce-4849-9334-d9a81340af01",
+            "name": "delete candidate",
+            "url": "http://localhost:3000/candidates/3",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-07-29T09:58:41.465Z",
+            "modified": "2023-07-31T06:56:26.416Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3ed23385-7d69-437e-901e-78b7f74abca2",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "log in",
+            "url": "http://localhost:3000/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-07-27T19:05:27.240Z",
+            "modified": "2023-07-28T06:34:43.673Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "t@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "tttt"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "70dce061-7f65-4d70-b7cf-08eae17d9f67",
+            "colId": "43d93b0b-16c3-4744-9d0a-191232460520",
+            "containerId": "dd82268a-dea9-43e0-993a-da993204f47e",
+            "name": "logout",
+            "url": "http://localhost:3000/logout",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2023-07-27T19:07:04.286Z",
+            "modified": "2023-07-28T04:59:10.399Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

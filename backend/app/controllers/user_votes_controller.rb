@@ -53,7 +53,6 @@ class UserVotesController < ApplicationController
   end
 
   def user_vote_params
-    params.require(:user_vote).permit(:userName, :eventName, :candidateId)
-    # Add more attributes from the UserVote model that you want to permit here.
+    params.require(:user_vote).permit(:userName, :eventName, :voting_event_id)
   end
 end
