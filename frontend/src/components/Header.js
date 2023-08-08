@@ -50,7 +50,7 @@ export default function Header() {
           )}
 
           <button className="signup_button" onClick={handleReadMore}>
-            SEE EVENTS
+            READ MORE
           </button>
         </div>
       </div>

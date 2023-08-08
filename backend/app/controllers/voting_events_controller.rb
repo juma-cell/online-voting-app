@@ -4,30 +4,31 @@ class VotingEventsController < ApplicationController
 
   def index
     @voting_events = VotingEvent.all
-    render json: @voting_events
+    render json: @voting_events, include: :user
   end
 
+  # GET /voting_events/:id
   def show
-    if @voting_event
-      render json: @voting_event.as_json(include: :user)
+    voting_event = VotingEvent.find_by(id: params[:id])
+
+    if voting_event
+      render json: voting_event.as_json(include: :user)
     else
       render json: { error: "Voting event not found" }, status: :not_found
     end
   end
 
-  def create
-    if @current_user
-      @voting_event = @current_user.voting_events.build(voting_event_params)
 
-      if @voting_event.save
-        render json: @voting_event.as_json(include: :user), status: :created
-      else
-        render json: { errors: @voting_event.errors.full_messages }, status: :unprocessable_entity
-      end
+  def create
+    voting_event = VotingEvent.new(voting_event_params)
+
+    if voting_event.save
+      render json: voting_event, status: :created
     else
-      render json: { error: "Unauthorized, please log in to create a voting event" }, status: :unauthorized
+      render json: { errors: voting_event.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
 
 
   def update
@@ -40,6 +41,7 @@ class VotingEventsController < ApplicationController
     end
   end
 
+
   def destroy
     if @current_user && @voting_event.destroy
       render json: { message: "Voting event was successfully destroyed" }, status: :ok
@@ -50,14 +52,27 @@ class VotingEventsController < ApplicationController
     end
   end
 
-  private
 
+  private
+  # def find_voting_event
+  #   @voting_event = VotingEvent.find(params[:id])
+  # rescue ActiveRecord::RecordNotFound
+  #   render json: { error: 'Voting event not found' }, status: :not_found
+  # end
   def find_voting_event
-    @voting_event = VotingEvent.find_by(id: params[:id])
-    render json: { error: "Voting event not found" }, status: :not_found unless @voting_event
+      @voting_event = VotingEvent.find_by(id: params[:id])
+      render json: { error: "Voting event not found" }, status: :not_found unless @voting_event
   end
+  # def find_voting_event
+  #   @voting_event = VotingEvent.includes(:user).find_by(id: params[:id])
+
+  #   if @voting_event.nil?
+  #     render json: { error: 'Voting event not found' }, status: :not_found
+  #   end
+  # end
+
 
   def voting_event_params
-    params.require(:voting_event).permit(:eventsName, :eventsDescription, :duration)
+    params.require(:voting_event).permit(:eventsName, :eventsDescription,:duration, :eventDate, :user_id)
   end
 end

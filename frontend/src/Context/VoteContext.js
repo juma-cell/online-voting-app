@@ -1,128 +1,149 @@
-import { createContext, useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { createContext, useState } from "react"
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 
-export const VoteContext = createContext();
+export const VoteContext = createContext()
 
 export default function VoteProvider({ children }) {
-  const nav = useNavigate();
-  const [votingEvents, setVotingEvents] = useState([]);
-  const [onChange, setOnChange] = useState(true);
+  const nav = useNavigate()
+  // const [votingEvents, setVotingEvents] = useState([])
+  const [onChange, setOnChange] = useState(true)
+  const BaseUrl = "http://127.0.0.1:3000"
 
-  const addEvent = (event_name, event_description, duration) => {
-    fetch("/voting_events", {
+  const addEventB = async (
+    event_name,
+    duration,
+    event_description,
+    event_date,
+    current_user
+  ) => {
+    try {
+      const response = async () =>
+        await (
+          await fetch(`${BaseUrl}/voting_events`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+
+            body: JSON.stringify({
+              eventsName: event_name,
+              duration: duration,
+              eventsDescription: event_description,
+              eventDate: event_date,
+              user_id: current_user,
+            }),
+          })
+        ).json()
+      const eventData = await response()
+      return eventData
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const addCandidate = async (role, userName, eventId, current_user_id) => {
+    try {
+      const response = async () =>
+        await (
+          await fetch(`${BaseUrl}/candidates`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              role: role,
+              userName: userName,
+              voting_event_id: eventId,
+              user_id: current_user_id,
+            }),
+          })
+        ).json()
+      const candidateData = await response()
+      console.log(candidateData)
+      return candidateData
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const addVote = (candidate_id, user_id, event_id) => {
+    fetch(`${BaseUrl}/voting_events`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        eventsName: event_name,
-        eventsDescription: event_description,
-        duration: duration
+        candidate_id: candidate_id,
+        user_id: user_id,
+        event_id: event_id,
       }),
     })
       .then((res) => res.json())
       .then((response) => {
         if (response.error) {
-          Swal.fire("Error", response.error, "error");
+          Swal.fire("Error", response.error, "error")
         } else {
-          nav("/"); // Redirect to another page on success if needed
-          Swal.fire("Success", response.message, "success");
-          setOnChange(!onChange);
-        }
-      });
-  };
-  const addCandidate = (role, userName, user_vote_id, voting_event_id) => {
-    // Make a fetch or API call to add the new candidate
-    const candidateData = {
-      role: role,
-      userName: userName,
-      user_vote_id: user_vote_id,
-      voting_event_id: voting_event_id,
-    };
-  
-    fetch('/candidates', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(candidateData),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          Swal.fire('Error', response.error, 'error');
-        } else {
-          // Handle success response
-          Swal.fire('Success', response.message, 'success');
-          setOnChange(!onChange); // Update the voting state or do any other necessary updates
+          nav("/") // Redirect to another page on success if needed
+          Swal.fire("Success", response.message, "success")
+          setOnChange(!onChange)
         }
       })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error adding candidate:', error);
-        Swal.fire('Error', 'Failed to add candidate', 'error');
-      });
-  };
-  
-  const addVote = (option_id, event_id) => {
-    fetch(`/user_votes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        option_id: option_id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          Swal.fire("Error", response.error, "error");
-        } else {
-          nav("/"); // Redirect to another page on success if needed
-          Swal.fire("Success", response.message, "success");
-          setOnChange(!onChange);
-        }
-      });
-  };
+  }
 
+  const addFeedback = async (voting_event_id, eventName, message) => {
+    const feedbackData = {
+      feedback: {
+        eventName: eventName,
+        message: message,
+        voting_event_id: voting_event_id
+      }
+    };
   
-  const deleteVoteEvent = (event_id) => {
-    fetch(`/voting_events/${event_id}`, {
+    try {
+      const response = await fetch('/feedbacks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(feedbackData)
+      })
+      return await response.json()
+    } catch (error) {
+      throw error // Rethrow the error for handling at a higher level
+    }
+  };
+  
+
+  const deleteVoteEvent = (user_id, event_id) => {
+    // voting_events/by_user/:user_id/:event_id
+    fetch(`${BaseUrl}/voting_events/${event_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((response) => {
         if (response.message) {
-          nav("/");
-          Swal.fire("Success", response.message, "success");
-          setOnChange(!onChange);
+          nav("/")
+          Swal.fire("Success", response.message, "success")
+          setOnChange(!onChange)
         } else {
-          Swal.fire("Error", "Something went wrong", "error");
+          Swal.fire("Error", "Something went wrong", "error")
         }
-      });
-  };
+      })
+  }
 
-  const fetchEvents = () => {
-    fetch("/voting_events", {
+  const fetchEventsData = () => {
+    fetch(`${BaseUrl}/voting_events`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .then((response) => {
-        setVotingEvents(response);
-        console.log(response);
-      });
-  };
+      .then((response) => response)
+  }
 
-const fetchCandidates = () => {
-    fetch("/candidates/:id", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        setVotingEvents(response);
-        console.log(response);
-      });
-  };
-  const editEvent = (event_name, event_description, start_date, end_date, event_id) => {
-    fetch(`/voting_events/${event_id}`, {
+
+  const editEvent = (
+    event_name,
+    event_description,
+    start_date,
+    end_date,
+    event_id
+  ) => {
+    fetch(`${BaseUrl}/voting_events/${event_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -139,28 +160,31 @@ const fetchCandidates = () => {
       .then((res) => res.json())
       .then((response) => {
         if (response.error) {
-          Swal.fire("Error", response.error, "error");
+          Swal.fire("Error", response.error, "error")
         } else {
-          nav("/addVote");
-          Swal.fire("Success", response.message, "success");
-          setOnChange(!onChange);
+          nav("/addVote")
+          Swal.fire("Success", response.message, "success")
+          setOnChange(!onChange)
         }
-      });
-  };
+      })
+  }
 
-  useEffect(() => {
-    fetchCandidates();
-    fetchEvents();
-  }, [onChange]);
+  // useEffect(() => {
+  //   fetchEvents()
+  // }, [onChange])
 
   const contextData = {
-    votingEvents,
+    fetchEventsData,
     addVote,
     deleteVoteEvent,
     editEvent,
-    addEvent,
+    addEventB,
     addCandidate,
-  };
+    BaseUrl,
+    addFeedback
+  }
 
-  return <VoteContext.Provider value={contextData}>{children}</VoteContext.Provider>;
+  return (
+    <VoteContext.Provider value={contextData}>{children}</VoteContext.Provider>
+  )
 }

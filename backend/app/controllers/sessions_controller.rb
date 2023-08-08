@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
         }
       end
     end
+
     def logged_in
       if @current_user
         render json: {
@@ -31,6 +32,7 @@ class SessionsController < ApplicationController
         }
       end
     end
+    
     def logout
         reset_session
         render json:{

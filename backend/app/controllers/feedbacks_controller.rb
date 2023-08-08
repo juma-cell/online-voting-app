@@ -43,6 +43,6 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.require(:feedback).permit(:eventName, :message)
+    params.require(:feedback).permit(:eventName, :message, :voting_event_id)
   end
 end

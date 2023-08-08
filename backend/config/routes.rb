@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :candidates
   resources :user_votes
   resources :events_options
-  resources :votes,only: [:create]
   resources :feedbacks, only: [:index, :create, :destroy ]
   resources :notification_tables
   resources :voting_events
@@ -12,7 +11,23 @@ Rails.application.routes.draw do
   post "/login", to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
  
+  resources :candidates do
+    collection do
+      get 'by_voting_event/:voting_event_id', action: :by_voting_event, as: :by_voting_event
+    end
+  end
 
+  resources :user_votes do
+    collection do
+      get 'by_event_id/:voting_event_id', action: :by_event_id, as: :by_event_id
+    end
+  end
+
+  # resources :voting_events do
+  # member do
+  #   delete 'destroy_by_user/:user_id', action: :destroy_by_user, as: :destroy_by_user
+  # end
+  # end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
