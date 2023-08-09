@@ -85,30 +85,6 @@ export default function VoteProvider({ children }) {
       })
   }
 
-  const addFeedback = async (voting_event_id, eventName, message) => {
-    const feedbackData = {
-      feedback: {
-        eventName: eventName,
-        message: message,
-        voting_event_id: voting_event_id
-      }
-    };
-  
-    try {
-      const response = await fetch('/feedbacks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(feedbackData)
-      })
-      return await response.json()
-    } catch (error) {
-      throw error // Rethrow the error for handling at a higher level
-    }
-  };
-  
-
   const deleteVoteEvent = (user_id, event_id) => {
     // voting_events/by_user/:user_id/:event_id
     fetch(`${BaseUrl}/voting_events/${event_id}`, {
@@ -135,7 +111,17 @@ export default function VoteProvider({ children }) {
       .then((response) => response)
   }
 
-
+  // const fetchEvents = () => {
+  //   fetch(`${BaseUrl}/voting_events`, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       setVotingEvents(response)
+  //       console.log(response)
+  //     })
+  // }
   const editEvent = (
     event_name,
     event_description,
@@ -169,6 +155,36 @@ export default function VoteProvider({ children }) {
       })
   }
 
+  const editEventB = async (
+    event_name,
+    duration,
+    event_description,
+    event_date,
+    current_user,
+    event_id
+  ) => {
+    try {
+      const response = async () =>
+        await (
+          await fetch(`${BaseUrl}/voting_events/${event_id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+
+            body: JSON.stringify({
+              eventsName: event_name,
+              duration: duration,
+              eventsDescription: event_description,
+              eventDate: event_date,
+              user_id: current_user,
+            }),
+          })
+        ).json()
+      const eventData = await response()
+      return eventData
+    } catch (error) {
+      console.log(error)
+    }
+  }
   // useEffect(() => {
   //   fetchEvents()
   // }, [onChange])
@@ -181,7 +197,7 @@ export default function VoteProvider({ children }) {
     addEventB,
     addCandidate,
     BaseUrl,
-    addFeedback
+    editEventB,
   }
 
   return (

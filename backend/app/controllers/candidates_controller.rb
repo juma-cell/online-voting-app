@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :set_candidate, only: [:show, :edit, :update, :destroy]
+  before_action :set_candidate, :find_candidate, only: [:show, :edit, :update, :destroy]
 
   # GET /candidates
   def index
@@ -52,7 +52,7 @@ class CandidatesController < ApplicationController
 
   # DELETE /candidates/1
   def destroy
-    @candidate.destroy
+    @mycandidate.destroy
     render json: { message: "Candidate was successfully destroyed" }, status: :ok
   end
 
@@ -64,7 +64,13 @@ class CandidatesController < ApplicationController
     render json: { error: 'Candidate not found' }, status: :not_found
   end
 
+   def find_candidate
+    @mycandidate = Candidate.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Candidate not found' }, status: :not_found
+  end
+
   def candidate_params
-    params.require(:candidate).permit(:role, :userName, :voting_event_id, :user_id)
+    params.require(:candidate).permit( :id,:role, :userName, :voting_event_id, :user_id)
   end
 end

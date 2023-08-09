@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_115819) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_05_224628) do
   create_table "candidates", force: :cascade do |t|
     t.string "role"
     t.string "userName"
@@ -28,7 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_115819) do
     t.integer "voting_event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "eventName"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
     t.index ["voting_event_id"], name: "index_feedbacks_on_voting_event_id"
   end

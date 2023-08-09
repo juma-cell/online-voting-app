@@ -122,3 +122,8 @@ body {
 .home_header {
   height: 450px;
 }
+
+.vote_check_mark {
+  display: block;
+  border-radius: 50px;
+}

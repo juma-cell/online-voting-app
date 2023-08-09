@@ -4,7 +4,7 @@ import { VoteContext } from "../Context/VoteContext";
 import Header from "../components/Header";
 
 function Home() {
-  const { fetchEventsData, BaseUrl } = useContext(VoteContext);
+  const { BaseUrl } = useContext(VoteContext);
   const [votingEvents, setVotingEvents] = useState([]);
 
   useEffect(() => {
@@ -89,10 +89,12 @@ function Home() {
                           {votingEvent.eventsDescription}
                         </p>
                       </div>
-                      <span className="text-green-500">
+                      <>
+                      <span className="text-blue-700">
                         Available Candidates:
-                      </span>{" "}
-                      Click on the event to view the candidates
+                      </span>{"    "}
+
+                        Click on the event to view the candidates</>
                     </div>
                   </div>
                 </Link>

@@ -1,6 +1,6 @@
 class VotingEventsController < ApplicationController
   include CurrentUserConcern
-  before_action :find_voting_event, only: [:show, :update, :destroy]
+  before_action :find_voting_event, :set_voting_event, only: [:show, :update, :destroy]
 
   def index
     @voting_events = VotingEvent.all
@@ -32,17 +32,16 @@ class VotingEventsController < ApplicationController
 
 
   def update
-    if @current_user && @voting_event.update(voting_event_params)
-      render json: @voting_event.as_json(include: :user)
-    elsif @current_user.nil?
-      render json: { error: "Unauthorized, please log in to update a voting event" }, status: :unauthorized
+    if @voting_event.update(voting_event_params)
+        render json: @voting_event.as_json(include: :user)
     else
-      render json: { errors: @voting_event.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @voting_event.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
 
   def destroy
+  
     if @current_user && @voting_event.destroy
       render json: { message: "Voting event was successfully destroyed" }, status: :ok
     elsif @current_user.nil?
@@ -62,6 +61,11 @@ class VotingEventsController < ApplicationController
   def find_voting_event
       @voting_event = VotingEvent.find_by(id: params[:id])
       render json: { error: "Voting event not found" }, status: :not_found unless @voting_event
+  end
+
+  def set_voting_event
+      @myvoting_event = VotingEvent.find_by(id: params[:id])
+      render json: { error: "Voting event not found" }, status: :not_found unless @myvoting_event
   end
   # def find_voting_event
   #   @voting_event = VotingEvent.includes(:user).find_by(id: params[:id])

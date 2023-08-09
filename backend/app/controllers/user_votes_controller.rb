@@ -56,7 +56,7 @@ class UserVotesController < ApplicationController
   end
 
   def update
-    @user_vote.user_id = @current_user.id
+    # @user_vote.user_id = @current_user.id
 
     if @user_vote.update(user_vote_params)
       render json: @user_vote
@@ -87,6 +87,6 @@ class UserVotesController < ApplicationController
   # end
 
   def user_vote_params
-    params.require(:user_vote).permit(:candidate_id, :user_id, :voting_event_id)
+    params.require(:user_vote).permit(:id,:candidate_id, :user_id, :voting_event_id)
   end
 end

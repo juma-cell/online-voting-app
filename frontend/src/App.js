@@ -14,6 +14,9 @@ import AddEvent from "./Pages/AddEvent"
 import VoteProvider from "./Context/VoteContext"
 import SingleEvent from "./Pages/SingleEvent"
 import CandidateList from "./Pages/CandidateList"
+import EditEvent from "./Pages/EditEvent"
+import PieChart1 from "./components/PieChart1"
+import PieChart2 from "./components/PieChart2"
 
 function App() {
   return (
@@ -31,7 +34,22 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/notification" element={<NotificationList />} />
             <Route path="/voting_events/:id" element={<SingleEvent />} />
+            <Route path="/voting_events/edit/:id" element={<EditEvent />} />
             <Route path="/candidates/:id" element={<CandidateList />} />
+            <Route path="/chart/1" element={<PieChart1 />} />
+            <Route
+              path="/chart/2"
+              element={
+                <PieChart2
+                  data={[
+                    { name: "Group A", value: 400 },
+                    { name: "Group B", value: 300 },
+                    { name: "Group C", value: 300 },
+                    { name: "Group D", value: 200 },
+                  ]}
+                />
+              }
+            />
             {/* <Route path="/candidates/:id" element={<SingleEvent />} /> */}
           </Route>
         </Routes>
