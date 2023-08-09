@@ -27,7 +27,7 @@ function Login() {
           className="mx-auto mb-0 mt-8 max-w-md space-y-4"
         >
           <div className="mt-5 flex flex-col">
-            <div className="login_label">Email</div>
+            <div className="login_label text-blue-400">Email</div>
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -37,7 +37,7 @@ function Login() {
           </div>
 
           <div className="mt-5 flex flex-col">
-            <div className="login_label">Password</div>
+            <div className="login_label text-blue-400">Password</div>
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}

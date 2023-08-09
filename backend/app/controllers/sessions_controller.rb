@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       if @current_user
         render json: {
           message: 'You are logged in',
-          user: @current_user.as_json(only: [:id, :firstName, :lastName, :userName, :email])
+          user: @current_user.as_json(only: [:id, :firstName, :lastName, :userName, :email, :is_admin])
         }
       else
         render json: {

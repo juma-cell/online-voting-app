@@ -13,5 +13,5 @@ class User < ApplicationRecord
     with: /\.(jpg|png|gif)\z/i,
     message: 'must be a URL for JPG, PNG, or GIF image.'
   }
-  validates :is_admin, inclusion: { in: [true, false] }, allow_nil: true
+  validates :is_admin, inclusion: { in: [true, false] }
 end

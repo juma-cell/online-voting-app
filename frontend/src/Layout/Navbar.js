@@ -57,6 +57,16 @@ function Navbar() {
               >
                 Add Event
               </Link>
+              {current_user && current_user.is_admin && (
+
+                    <Link
+                to="/admin"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+              >
+                Admin
+              </Link>
+              )}
+          
               <button
                 onClick={signout}
                 className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-red-400 to-red-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"

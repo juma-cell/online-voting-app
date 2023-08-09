@@ -26,13 +26,12 @@ function Home() {
   }, [BaseUrl]);
 
   useEffect(() => {
-    const id = "your_voting_event_id"; // Replace with the actual voting event id
+    const id = "your_voting_event_id";
     fetch(`${BaseUrl}/candidates/by_voting_event/${id}`)
       .then((res) => res.json())
       .then((EventCandidates) => {
         console.log(EventCandidates);
-        // Assuming you have a setCandidatesData function to set the candidates data
-        // setCandidatesData(EventCandidates);
+     
       });
   }, [BaseUrl]);
 
@@ -44,9 +43,10 @@ function Home() {
         <Header />
       </div>
       <div className="mt-20">
-        <h2 className="text-xl font-semibold text-blue-800 mb-2 uppercase text-center">
-          Available Events
-        </h2>
+      <h2 className="text-xl font-semibold text-blue-800 mb-2 uppercase text-center">
+  Available Events {votingEvents?.length > 0 && `(${votingEvents.length} events)`}
+</h2>
+
         {votingEvents?.length > 0 ? (
           votingEvents.map((votingEvent, index) => {
             const eventExpired = new Date(votingEvent.endTime) < new Date();

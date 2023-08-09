@@ -17,6 +17,7 @@ import CandidateList from "./Pages/CandidateList"
 import EditEvent from "./Pages/EditEvent"
 import PieChart1 from "./components/PieChart1"
 import PieChart2 from "./components/PieChart2"
+import Admin from "./Pages/Admin"
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/voting_events/edit/:id" element={<EditEvent />} />
             <Route path="/candidates/:id" element={<CandidateList />} />
             <Route path="/chart/1" element={<PieChart1 />} />
+            <Route path="/admin" element={<Admin/>}/>
             <Route
               path="/chart/2"
               element={
