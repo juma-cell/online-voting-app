@@ -51,20 +51,24 @@ function Navbar() {
                 Profile
               </Link>
 
-              <Link
-                to="/addevent"
-                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
-              >
-                Add Event
-              </Link>
+             
               {current_user && current_user.is_admin && (
-
+    <>
                     <Link
                 to="/admin"
                 className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
               >
                 Admin
               </Link>
+
+               <Link
+                to="/addevent"
+                className="block py-2 pl-3 pr-4 text-white bg-gradient-to-br from-purple-900 to-purple-900 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 text-center mr-2 mb-2"
+              >
+                Add Event
+              </Link>
+    </>
+              
               )}
           
               <button
@@ -73,7 +77,7 @@ function Navbar() {
               >
                 Log out
               </button>
-            </>
+ </>
           )}
         </div>
       </div>
