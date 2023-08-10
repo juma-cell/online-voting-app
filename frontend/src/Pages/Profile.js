@@ -4,14 +4,32 @@ import { AuthContext } from '../Context/AuthContext';
 
 function Profile() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [passwordFormVisible, setPasswordFormVisible] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const { current_user } = useContext(AuthContext);
 
   const toggleDropdown = () => {
     setDropdownVisible((prevState) => !prevState);
-    if (!current_user) {
-      // Handle the case when current_user is not available
-      // ... (You can add the necessary logic here)
+    setPasswordFormVisible(false);
+  };
+
+  const togglePasswordForm = () => {
+    setPasswordFormVisible((prevState) => !prevState);
+  };
+
+  const handlePasswordChange = () => {
+    if (newPassword !== confirmPassword) {
+      // Handle password mismatch
+      return;
     }
+    // Call an API to change the password
+    // Reset the form fields and close the form
+    setCurrentPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+    setPasswordFormVisible(false);
   };
 
   return (
@@ -72,6 +90,45 @@ function Profile() {
             </div>
             {/* You can add more user details here */}
           </div>
+          {/* Password change form */}
+          {passwordFormVisible && (
+            <div className="mt-4">
+              <input
+                type="password"
+                placeholder="Current Password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                className="px-4 py-2 border rounded-lg"
+              />
+              <input
+                type="password"
+                placeholder="New Password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="mt-2 px-4 py-2 border rounded-lg"
+              />
+              <input
+                type="password"
+                placeholder="Confirm New Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="mt-2 px-4 py-2 border rounded-lg"
+              />
+              <button
+                onClick={handlePasswordChange}
+                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg"
+              >
+                Change Password
+              </button>
+            </div>
+          )}
+          {/* Toggle password form button */}
+          <button
+            onClick={togglePasswordForm}
+            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg"
+          >
+            Change Password
+          </button>
         </div>
       </div>
     </div>
