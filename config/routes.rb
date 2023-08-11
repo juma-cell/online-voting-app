@@ -23,14 +23,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :voting_events do
-  # member do
-  #   delete 'destroy_by_user/:user_id', action: :destroy_by_user, as: :destroy_by_user
-  # end
-  # end
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "*parts" , to:"react#index"
 end

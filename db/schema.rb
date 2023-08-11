@@ -11,11 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_08_09_115125) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "candidates", force: :cascade do |t|
     t.string "role"
     t.string "userName"
-    t.integer "voting_event_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "voting_event_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_candidates_on_user_id"
@@ -24,8 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_115125) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.text "message"
-    t.integer "user_id", null: false
-    t.integer "voting_event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "voting_event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
@@ -33,9 +36,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_115125) do
   end
 
   create_table "user_votes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "voting_event_id", null: false
-    t.integer "candidate_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "voting_event_id", null: false
+    t.bigint "candidate_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["candidate_id"], name: "index_user_votes_on_candidate_id"
@@ -60,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_115125) do
     t.text "eventsDescription"
     t.integer "duration"
     t.date "eventDate"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_voting_events_on_user_id"
