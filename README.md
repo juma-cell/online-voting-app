@@ -16,14 +16,8 @@ Users can update their usernames and profile images.
 
 Users can access ballots for each voting event and cast their votes.
 Users can participate in multiple voting events simultaneously.
-Email or SMS verification is implemented to prevent duplicate votes.
 Users can vote in an event or for a candidate only once.
 Real-time voting results are displayed, ensuring transparency.
-
-# Notifications and Reminders
-
-Users receive notifications and reminders about upcoming voting events to encourage participation.\
-
 
 # Admin Functionality
 Admins can create voting events with multiple options (e.g., candidates, survey choices).
