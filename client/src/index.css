@@ -127,3 +127,17 @@ body {
   display: block;
   border-radius: 50px;
 }
+/* Small screens */
+@media (max-width: 767px) {
+  /* Styles for small screens */
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Styles for medium screens */
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  /* Styles for large screens */
+}
