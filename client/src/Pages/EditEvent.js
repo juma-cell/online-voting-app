@@ -18,7 +18,7 @@ function EditEvent() {
   const [duration, setDuration] = useState("")
   const [showOptionInput, setShowOptionInput] = useState(false)
   const { id } = useParams()
-  const [] = useState()
+  // const [] = useState()
   let EditList = []
   // const { current_user } = useContext(AuthContext)
 

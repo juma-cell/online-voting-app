@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 function Voting() {
-  const { } = useParams();
+  // const { } = useParams();
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleVote = () => {
