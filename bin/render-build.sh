@@ -29,7 +29,6 @@ cd ..
 
 # Build commands for back end
 # Use the full path to the bundle command (replace '/path/to/bundle' with the actual path)
-sudo gem install bundler
 bundle install
 bundle exec rake db:migrate
 bundle exec rake db:seed
