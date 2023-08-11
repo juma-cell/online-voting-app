@@ -18,7 +18,7 @@ function EditEvent() {
   const [duration, setDuration] = useState("")
   const [showOptionInput, setShowOptionInput] = useState(false)
   const { id } = useParams()
-  const [editListState, setEditListState] = useState()
+  const [] = useState()
   let EditList = []
   // const { current_user } = useContext(AuthContext)
 
@@ -26,21 +26,21 @@ function EditEvent() {
   // const [votesForEvent, setVotesForEvent] = useState([])
   // const [candidatesData, setCandidatesData] = useState([])
   // const [newEventId, setNewEventId] = useState(null)
-  function toggleValueInList(value, list) {
-    const index = list.indexOf(value)
+  // function (value, list) {
+  //   const index = list.indexOf(value)
 
-    if (index !== -1) {
-      // Value is in the list, remove it
-      list.splice(index, 1)
-      // setEditListState(list)
-    } else {
-      // Value is not in the list, add it
-      list.push(value)
-      // setEditListState(list)
-    }
+  //   if (index !== -1) {
+  //     // Value is in the list, remove it
+  //     list.splice(index, 1)
+  //     // setEditListState(list)
+  //   } else {
+  //     // Value is not in the list, add it
+  //     list.push(value)
+  //     // setEditListState(list)
+  //   }
 
-    return list
-  }
+  //   return list
+  // }
 
   function removeItemById(list, idToRemove) {
     return list.reduce((accumulator, item) => {

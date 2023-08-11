@@ -58,12 +58,12 @@ function Profile() {
           >
             <ul className="py-2" aria-labelledby="dropdownButton">
               <li>
-                <a
-                  href="#"
+                <li
+                 
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
                   Edit Profile
-                </a>
+                </li>
               </li>
               {/* You can add more dropdown items here */}
             </ul>
@@ -73,7 +73,7 @@ function Profile() {
           <img
             className="w-24 h-24 mb-3 rounded-full shadow-lg"
             src={image2}
-            alt="Bonnie image"
+            alt=""
           />
           <div className="text-gray-800 dark:text-white text-center">
             <div>

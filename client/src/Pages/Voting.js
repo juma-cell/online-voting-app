@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Voting() {
-  const { id } = useParams();
+  const { } = useParams();
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleVote = () => {
